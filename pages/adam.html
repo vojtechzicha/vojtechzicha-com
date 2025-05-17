@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adamovo spoření na stáří</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        header {
+            background-color: #007bff; /* Modrá */
+            color: #fff;
+            padding: 25px 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin: -20px -20px 20px -20px; /* Přesah pro hezčí vzhled */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 5px solid #007bff; /* Modrý proužek */
+            background-color: #e9f5ff; /* Světle modré pozadí sekce */
+            border-radius: 0 5px 5px 0;
+        }
+
+        section:nth-child(odd) { /* Střídání barev pro lepší čitelnost */
+            background-color: #f8f9fa;
+            border-left-color: #28a745; /* Zelený proužek */
+        }
+
+
+        h2 {
+            color: #0056b3; /* Tmavší modrá */
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        section:nth-child(odd) h2 {
+            color: #19692c; /* Tmavší zelená */
+            border-bottom-color: #28a745;
+        }
+
+
+        h3 {
+            color: #0069d9; /* Středně modrá */
+            margin-top: 25px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            background-color: #ffffff;
+            margin-bottom: 8px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        ul li strong {
+            color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: #d9534f; /* Červená pro zvýraznění negativních aspektů */
+        }
+        .positive-highlight {
+            font-weight: bold;
+            color: #28a745; /* Zelená pro pozitivní */
+        }
+
+        .summary-value {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .disclaimer {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-left: 3px solid #ccc;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            font-size: 0.9em;
+            color: #777;
+            border-top: 1px solid #eee;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Adamovo spoření na stáří</h1>
+            <p>Co když se důchodu přece jen dožije?</p>
+        </header>
+
+        <section id="adam-situace">
+            <h2>Adamova výchozí situace</h2>
+            <ul>
+                <li><strong>Věk:</strong> 45 let</li>
+                <li><strong>Předpokládaný věk odchodu do důchodu:</strong> 67 let</li>
+                <li><strong>Doba do důchodu:</strong> 22 let</li>
+                <li><strong>Současný hrubý příjem:</strong> 30 000 Kč</li>
+                <li><strong>Plánovaná úspora "bokem" na spořicím účtu:</strong> 300 000 Kč v 67 letech</li>
+                <li><strong>Postoj:</strong> <span class="highlight">"Důchodu se nedožiju."</span></li>
+            </ul>
+            <p class="disclaimer">
+                <strong>Předpoklady pro výpočty penzijního spoření:</strong>
+                Průměrné konzervativní roční zhodnocení 3 % p.a. (po poplatcích). Státní příspěvky dle pravidel od 1.7.2024. Pro zjednodušení nepočítáme s daňovými úlevami ani inflací (jde o nominální hodnoty).
+            </p>
+        </section>
+
+        <section id="varianta-a">
+            <h2>A. Adam si bude šetřit sám na spořicí účet</h2>
+            <p>Adam plánuje našetřit 300 000 Kč do svých 67 let na spořicím účtu.</p>
+            <ul>
+                <li><strong>Cílová částka:</strong> 300 000 Kč</li>
+                <li><strong>Doba spoření:</strong> 22 let (264 měsíců)</li>
+                <li><strong>Potřebná měsíční úložka:</strong> 300 000 Kč / 264 měsíců = <span class="summary-value">1 137 Kč</span></li>
+                <li><strong>Celkem naspořeno v 67 letech:</strong> <span class="summary-value positive-highlight">300 000 Kč</span></li>
+            </ul>
+            <p class="disclaimer">Na spořicím účtu bude zhodnocení pravděpodobně velmi nízké, po započtení inflace a případných daní z úroků může být i záporné. Pro jednoduchost počítáme s cílovou částkou bez výraznějšího zúročení.</p>
+        </section>
+
+        <section id="varianta-b">
+            <h2>B. Založí si penzijko (DPS) a bude vkládat 1 137 Kč měsíčně</h2>
+            <p>Adam vezme částku, kterou by si jinak ukládal na spořicí účet, a vloží ji do penzijního spoření.</p>
+            <ul>
+                <li><strong>Vlastní vklad Adama:</strong> 1 137 Kč</li>
+                <li><strong>Státní příspěvek (20 % z 1137 Kč):</strong> 227 Kč</li>
+                <li><strong>Celkem měsíčně do penzijka:</strong> 1 137 Kč + 227 Kč = 1 364 Kč</li>
+                <li><strong>Doba spoření:</strong> 22 let</li>
+                <li><strong>Předpokládané zhodnocení:</strong> 3 % p.a.</li>
+                <li><strong>Celkem naspořeno v 67 letech (včetně státních příspěvků a zhodnocení):</strong> <span class="summary-value positive-highlight">cca 508 000 Kč</span></li>
+            </ul>
+        </section>
+
+        <section id="varianta-c">
+            <h2>C. Založí si penzijko (DPS), vkládá 1 137 Kč a zaměstnavatel přispívá 300 Kč</h2>
+            <p>K vlastnímu vkladu do penzijka Adamovi přispěje i zaměstnavatel.</p>
+            <ul>
+                <li><strong>Vlastní vklad Adama:</strong> 1 137 Kč</li>
+                <li><strong>Státní příspěvek:</strong> 227 Kč (stále se počítá jen z Adamova vkladu)</li>
+                <li><strong>Příspěvek zaměstnavatele:</strong> 300 Kč</li>
+                <li><strong>Celkem měsíčně do penzijka:</strong> 1 137 Kč + 227 Kč + 300 Kč = 1 664 Kč</li>
+                <li><strong>Doba spoření:</strong> 22 let</li>
+                <li><strong>Předpokládané zhodnocení:</strong> 3 % p.a.</li>
+                <li><strong>Celkem naspořeno v 67 letech (včetně státních příspěvků, příspěvku zaměstnavatele a zhodnocení):</strong> <span class="summary-value positive-highlight">cca 620 000 Kč</span></li>
+            </ul>
+        </section>
+
+        <section id="statni-duchod">
+            <h2>Odhadovaný státní starobní důchod Adama</h2>
+            <p>Výše státního důchodu závisí na celkové době pojištění a výši příjmů za celý život. Toto je velmi hrubý odhad.</p>
+            <p>Při hrubém příjmu 30 000 Kč a dostatečném počtu odpracovaných let by se jeho starobní důchod z I. pilíře mohl pohybovat (velmi orientačně a dle dnešních pravidel) někde v rozmezí <span class="summary-value">16 000 – 18 000 Kč měsíčně</span>.</p>
+            <p class="disclaimer">Toto je jen hrubý odhad, skutečnost může být jiná kvůli budoucím legislativním změnám a valorizacím. Tento důchod je nezávislý na výše uvedených variantách soukromého spoření.</p>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a porovnání pro Adama v 67 letech</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Varianta</th>
+                        <th>Měsíční vklad Adama</th>
+                        <th>Měsíční státní příspěvek</th>
+                        <th>Měsíční příspěvek zaměstnavatele</th>
+                        <th>Celkem naspořeno v 67 letech</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>A. Spořicí účet (plán Adama)</strong></td>
+                        <td>1 137 Kč</td>
+                        <td>0 Kč</td>
+                        <td>0 Kč</td>
+                        <td class="summary-value">cca 300 000 Kč</td>
+                    </tr>
+                    <tr>
+                        <td><strong>B. Penzijko (vlastní vklad)</strong></td>
+                        <td>1 137 Kč</td>
+                        <td>227 Kč</td>
+                        <td>0 Kč</td>
+                        <td class="summary-value positive-highlight">cca 508 000 Kč</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C. Penzijko (vlastní vklad + zaměstnavatel)</strong></td>
+                        <td>1 137 Kč</td>
+                        <td>227 Kč</td>
+                        <td>300 Kč</td>
+                        <td class="summary-value positive-highlight">cca 620 000 Kč</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="co-rici-adamovi">
+            <h2>Co říci Adamovi?</h2>
+            <ul>
+                <li><strong>Argument "nedožiju se":</strong> Statistická pravděpodobnost dožití důchodového věku je vysoká. Pro muže ve věku 45 let je naděje dožití dalších cca 30-35 let. Spoléhat na to, že se důchodu nedožije, je <span class="highlight">velmi riskantní strategie</span>. Co když se ho dožije a nebude mít prostředky?</li>
+                <li><strong>Rozdíl v naspořené částce:</strong>
+                    <ul>
+                        <li>Sám si našetří 300 000 Kč.</li>
+                        <li>S penzijkem (i bez zaměstnavatele) může mít o více než <span class="positive-highlight">200 000 Kč více</span> díky státním příspěvkům a zhodnocení.</li>
+                        <li>Pokud by mu přispíval i zaměstnavatel, rozdíl by byl více než <span class="positive-highlight">320 000 Kč</span> oproti jeho plánu. To je více než dvojnásobek jeho cílové částky!</li>
+                    </ul>
+                </li>
+                <li><strong>Dopad na život v důchodu:</strong>
+                    <ul>
+                        <li>Státní důchod 16-18 tisíc Kč nemusí stačit na pokrytí všech potřeb a udržení životního standardu, na který je zvyklý.</li>
+                        <li>Naspořených 300 000 Kč mu při rozpočítání na např. 15 let života v důchodu dá navíc jen cca <span class="summary-value">1 660 Kč měsíčně</span>.</li>
+                        <li>S částkou 620 000 Kč z varianty C by to bylo už cca <span class="summary-value positive-highlight">3 440 Kč měsíčně</span> navíc k důchodu po dobu 15 let.</li>
+                    </ul>
+                </li>
+                <li><strong>Příspěvek zaměstnavatele je "dárek":</strong> Pokud má možnost získat příspěvek od zaměstnavatele, je škoda ho nevyužít. Jsou to peníze navíc, které by jinak nedostal.</li>
+            </ul>
+            <p>Adam by měl zvážit, že i malá pravidelná částka v penzijním spoření, zejména s podporou státu a případně zaměstnavatele, může v dlouhodobém horizontu znamenat výrazně vyšší finanční polštář na stáří. Jeho argument "nedožiju se" je spíše psychologická obrana než racionální plán.</p>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Příklad pro Adama. Informace jsou pouze orientační a neměly by být považovány za finanční poradenství.</p>
+        </footer>
+    </div>
+</body>
+</html>
