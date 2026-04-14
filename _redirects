@@ -1,0 +1,22 @@
+# Short URLs for documents
+
+/alevel /docs/alevel.pdf 301
+/archimate-anywhere /docs/archimate-anywhere.pdf 301
+/archimate-foundation /docs/archimate-foundation.pdf 301
+/archimate-practitioner /docs/archimate-practitioner.pdf 301
+/archimate /docs/archimate-practitioner.pdf 301
+/aws-cloud-practitioner-score /docs/aws-cloud-practitioner-score.pdf 301
+/aws-cloud-practitioner /docs/aws-cloud-practitioner.pdf 301
+/aws-sa-associate-score /docs/aws-sa-associate-score.pdf 301
+/aws-sa-associate /docs/aws-sa-associate.pdf 301
+/aws /docs/aws-sa-associate.pdf 301
+/biztalk /docs/biztalk.pdf 301
+/google-cloud /docs/google-cloud.pdf 301
+/itil-foundation /docs/itil-foundation.pdf 301
+/itil /docs/itil-foundation.pdf 301
+/llb /docs/llb.pdf 301
+/ml /docs/ml.pdf 301
+/togaf-certified /docs/togaf-certified.pdf 301
+/togaf-foundation /docs/togaf-foundation.pdf 301
+/togaf /docs/togaf-certified.pdf 301
+/trillium /docs/trillium.pdf 301
