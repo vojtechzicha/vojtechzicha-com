@@ -8628,15 +8628,49 @@ h1, h2, h3, h4, h5,
         background: #3e64ff;
         color: #fff; }
 
-.ftco-about .img-about {
+.ftco-about .img-about-wrap {
   width: 100%;
-  z-index: 0;
+  padding: 3rem 2.5rem 3rem 1rem;
   position: relative; }
-  .ftco-about .img-about .img {
-    display: block;
+  @media (max-width: 767.98px) {
+    .ftco-about .img-about-wrap {
+      padding: 2rem 1.5rem; } }
+
+.ftco-about .img-about-frame {
+  position: relative;
+  display: inline-block;
+  width: 100%; }
+  .ftco-about .img-about-frame::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 16px;
     width: 100%;
-    position: relative;
-    z-index: 1; }
+    height: 100%;
+    border: 2px solid rgba(62, 100, 255, 0.25);
+    border-radius: 12px;
+    z-index: 0;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease; }
+  .ftco-about .img-about-frame:hover::before {
+    top: 10px;
+    left: 10px;
+    border-color: rgba(62, 100, 255, 0.45); }
+
+.ftco-about .img-about-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+  -webkit-box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  -webkit-transition: box-shadow 0.4s ease, -webkit-transform 0.4s ease;
+  transition: box-shadow 0.4s ease, transform 0.4s ease; }
+  .ftco-about .img-about-photo:hover {
+    -webkit-box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.2); }
 
 .ftco-about ul.about-info {
   display: inline-block;
