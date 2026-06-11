@@ -63,9 +63,10 @@ Paths are relative to the repo root.*
     (calendar.app.google/LLnCJUd7MFvhzsfv5) is the primary CTA on the homepage,
     role pages, and footer; email stays as the secondary channel. URL lives in
     `src/data/site.ts` → `booking`.
-13. **Role-specific CVs** — every role page's "Download CV" points at the single
-    `/cv` PDF. The assignment plans per-role Typst-generated PDFs (`/cv-aws`,
-    `/cv-devops`…); until then this is intentional.
+13. ~~**Role-specific CVs**~~ — done: every build generates one PDF per role
+    profile plus the generalist; role pages link their own CV (`/cv-aws`,
+    `/cv-devops`, …), the rest of the site links `/cv`. The short slug is the
+    `cvSlug` field in each `src/content/roles/*.yaml`.
 14. **Social links** — the old footer's Twitter/Mastodon/Facebook links were
     dropped (ideas.md flagged them as possibly dead); only LinkedIn + GitHub
     remain. Re-add any you actively use (`src/data/site.ts` + `Base.astro`).
@@ -84,13 +85,21 @@ Paths are relative to the repo root.*
     exist but are unused, and the repo must stay free of NDA content
     (assignment.md §4.5: private repo / submodule / encryption first). Case
     pages show the "full detail under NDA" strip — that's the only NDA surface.
-20. **Print documents** — `/print/` renders the CV (3 pp) and a general
-    letterhead/cover-letter template (1 p) from the same content base; open the
-    page and ⌘P → Save as PDF (A4). The page is `noindex` and outside the
-    sitemap. The letter's `[ bracketed ]` placeholders are intentional —
-    fill them per application. English only for now; a Czech print mirror can
-    be added the same way if needed. When you save a released CV PDF, archive
-    it in `public/files/` and repoint `/cv` in `public/_redirects` as before.
+20. **Generated CV PDFs** — fully automatic, no manual printing. Every build:
+    `scripts/generate-cv.mjs` renders the print sources (`/print/` = generalist,
+    `/print/<role>/` per role) to A4 PDFs with headless Chromium, fails the
+    build if a page overflows, writes them to `/files/cv/…`, and generates the
+    `/cv` + `/cv-<slug>` redirects into `_redirects`. To curate what appears in
+    print but stays on the web (old certificates, etc.), set `print: false` on
+    the entry — currently the foundations/practitioner-level and pre-2017
+    certificates are web-only, matching the curated Summer 2026 CV. English
+    only for now; a Czech CV is one more manifest entry when needed. Historic
+    PDFs stay archived in `public/files/`.
+21. **Application microsites** (assignment.md §4.3) — not built yet, but the
+    CV pipeline is shaped for them: `src/pages/print/manifest.json.ts` is the
+    single list of CVs to generate, so a future `applications` collection
+    (per-company token pages under `/a/<token>/`) adds its custom CV by adding
+    a manifest entry — same generator, no new machinery.
 
 ## Where things live (quick map)
 

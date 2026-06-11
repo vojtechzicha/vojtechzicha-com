@@ -1,6 +1,6 @@
-/* Print documents — CV + general letterhead (Drafting register).
-   Adapted from the print-design prototype; fonts are the site's own
-   self-hosted variable Archivo + JetBrains Mono. A4, ⌘P → PDF. */
+/* CV print sources (Drafting register) — rendered to PDFs at build time
+   by scripts/generate-cv.mjs. Adapted from the print-design prototype;
+   fonts are the site's own self-hosted variable Archivo + JetBrains Mono. */
 
 @font-face {
   font-family: 'Archivo';
@@ -286,6 +286,26 @@ body {
   color: var(--ink);
   font-weight: 600;
 }
+.profile-ul {
+  margin: 6pt 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 2.5pt;
+}
+.profile-ul li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8pt;
+  font-size: 9.5pt;
+  line-height: 1.45;
+  color: var(--ink2);
+}
+.profile-ul li .b {
+  font-family: var(--mono);
+  color: var(--accent);
+  font-weight: 700;
+}
 
 /* experience entry: meta column + body */
 .xp {
@@ -477,79 +497,6 @@ body {
 }
 .docfoot .pg {
   color: var(--accent);
-}
-
-/* ---- general / correspondence ---- */
-.corr {
-  margin-top: 16pt;
-}
-.corr .metaline {
-  display: flex;
-  justify-content: space-between;
-  gap: 20pt;
-  flex-wrap: wrap;
-  font-family: var(--mono);
-  font-size: 8.5pt;
-  color: var(--muted);
-  padding-bottom: 14pt;
-}
-.corr .metaline .v {
-  color: var(--ink);
-}
-.corr .to {
-  margin-top: 6pt;
-  font-size: 10pt;
-  line-height: 1.6;
-}
-.corr .to .lab {
-  font-family: var(--mono);
-  font-size: 8pt;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  display: block;
-  margin-bottom: 4pt;
-}
-.corr .re {
-  margin-top: 16pt;
-  font-size: 10pt;
-}
-.corr .re b {
-  font-family: var(--mono);
-  font-size: 8.5pt;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-.corr .body {
-  margin-top: 14pt;
-  font-size: 10.5pt;
-  line-height: 1.62;
-  color: var(--ink2);
-  max-width: 62em;
-}
-.corr .body p {
-  margin: 0 0 10pt;
-}
-.corr .sign {
-  margin-top: 18pt;
-  font-size: 10.5pt;
-}
-.corr .sign .sp {
-  height: 20pt;
-}
-.corr .sign .nm {
-  font-weight: 700;
-  font-size: 11pt;
-}
-.corr .sign .rl {
-  font-family: var(--mono);
-  font-size: 8.5pt;
-  color: var(--muted);
-  margin-top: 2pt;
-}
-.corr .placeholder {
-  color: #9aa3b2;
 }
 
 /* ---- print ---- */

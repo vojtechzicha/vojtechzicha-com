@@ -80,6 +80,8 @@ const roles = defineCollection({
   schema: z.object({
     order: z.number(),
     default: z.boolean().default(false),
+    /** short CV URL suffix: /cv-<cvSlug> redirects to this role's PDF */
+    cvSlug: z.string(),
     title: localized,
     glyph: z.enum(['triangle', 'diamond', 'circle', 'square', 'bar', 'ring', 'half']),
     /** oklch hue — all blue-family tints of the single accent */
@@ -122,6 +124,8 @@ const education = defineCollection({
     school: z.string(),
     note: localized.optional(),
     url: z.string().optional(),
+    /** include in the generated print CV (web always shows everything) */
+    print: z.boolean().default(true),
   }),
 })
 
@@ -136,6 +140,8 @@ const certifications = defineCollection({
     date: z.string(),
     /** short URL path on this domain, e.g. /aws-sa-associate */
     url: z.string().optional(),
+    /** include in the generated print CV (web always shows everything) */
+    print: z.boolean().default(true),
   }),
 })
 

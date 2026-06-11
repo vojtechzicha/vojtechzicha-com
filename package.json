@@ -5,14 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "build": "astro build && node scripts/generate-cv.mjs",
+    "preview": "astro preview",
+    "build:site": "astro build"
   },
   "dependencies": {
     "astro": "^5.0.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "playwright": "^1.60.0",
     "typescript": "^5.9.3"
   }
 }

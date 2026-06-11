@@ -39,6 +39,7 @@ const otherRoles = allRoles.filter((x) => x.id !== role.id)
 
 const idx = allRoles.findIndex((x) => x.id === role.id) + 1
 const title = `${r.title[lang]} — ${SITE.name}`
+const cvPath = `/cv-${r.cvSlug}`
 const mailto = `mailto:${SITE.email}?subject=${encodeURIComponent(
   `${r.title[lang]} — ${UI.cta.emailSubject[lang]}`
 )}`
@@ -63,7 +64,7 @@ const tintDark = roleTintDark(r.hue)
       <p class="pitch">{r.pitch[lang]}</p>
       <div class="cta">
         <a class="btn" href={SITE.booking} rel="noopener">{UI.cta.book[lang]}</a>
-        <a class="emaillink" href={SITE.cvPath}>{UI.cta.downloadCv[lang]}</a>
+        <a class="emaillink" href={cvPath}>{UI.cta.downloadCv[lang]}</a>
       </div>
       <div style="margin-top:24px">
         <span class={'pill' + (SITE.availability.state === 'booked' ? ' booked' : '')}>

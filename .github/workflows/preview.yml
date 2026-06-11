@@ -22,9 +22,11 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Build
+      # Chromium renders the CV PDFs from the print sources during the build
+      - name: Build (site + CV PDFs)
         run: |
           npm ci
+          npx playwright install --with-deps chromium
           npm run build
 
       - name: Deploy preview to Netlify

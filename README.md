@@ -40,9 +40,11 @@ authoring language; keep both in sync — never edit one without the other.
 - **New case study** — add a YAML file to `src/content/projects/`; it appears on
   `/work/` automatically, on the homepage if `featured: true`, and on role pages
   that list its id.
-- **CV / letterhead PDF** — open `/print/` (noindex, generated from the same
-  content base) and ⌘P → Save as PDF, A4. Archive released CVs in
-  `public/files/`.
+- **CV PDFs** — generated automatically at every build (no manual step):
+  `scripts/generate-cv.mjs` renders `/print/` (generalist → `/cv`) and
+  `/print/<role>/` (per role → `/cv-<cvSlug>`) to A4 PDFs and generates the
+  redirects. Set `print: false` on a certification/education entry to keep it
+  web-only. Historic PDFs stay archived in `public/files/`.
 
 ## Development & deployment
 

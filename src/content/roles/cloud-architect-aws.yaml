@@ -1,4 +1,5 @@
 order: 3
+cvSlug: 'aws'
 title: { en: 'Cloud Architect (AWS)', cs: 'Cloud architekt (AWS)' }
 glyph: triangle
 hue: 262

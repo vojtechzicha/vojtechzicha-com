@@ -1,4 +1,5 @@
 order: 1
+cvSlug: 'solution'
 default: true
 title: { en: 'Solution Architect', cs: 'Solution architekt' }
 glyph: diamond
