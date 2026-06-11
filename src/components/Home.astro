@@ -35,9 +35,11 @@ const projById = Object.fromEntries(projects.map((p) => [p.id, p]))
     <span class="crop tl" aria-hidden="true"></span>
     <span class="crop tr" aria-hidden="true"></span>
     <div class="hero-cols">
-      <div class="hero-main">
+      <div class="hero-head">
         <span class="eyebrow">{SITE.eyebrow[lang]}</span>
         <h1>{SITE.tagline[lang]}</h1>
+      </div>
+      <div class="hero-body">
         <p class="lede">{SITE.lede[lang]}</p>
         <p class="pitch">{SITE.pitch[lang]}</p>
         <nav class="chips" aria-label={UI.role.eyebrow[lang]}>
