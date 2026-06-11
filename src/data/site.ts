@@ -17,6 +17,7 @@ export const SITE = {
   phoneHref: 'tel:+420727913052',
   linkedin: 'https://www.linkedin.com/in/vojtechzicha/',
   github: 'https://github.com/vojtechzicha/',
+  booking: 'https://calendar.app.google/LLnCJUd7MFvhzsfv5',
   cvPath: '/cv',
 
   title: {
@@ -46,10 +47,10 @@ export const SITE = {
   },
 
   availability: {
-    state: 'available' as 'available' | 'booked',
+    state: 'booked' as 'available' | 'booked',
     label: {
-      en: 'Available for freelancing — project or part-time',
-      cs: 'K dispozici pro freelance spolupráci — projektově i na část úvazku',
+      en: 'Booked until October 2026 — available for part-time engagements',
+      cs: 'Obsazeno do října 2026 — k dispozici pro spolupráci na část úvazku',
     },
   },
 
@@ -162,6 +163,8 @@ export const UI = {
     },
   },
   cta: {
+    book: { en: 'BOOK A CALL →', cs: 'REZERVOVAT HOVOR →' },
+    bookShort: { en: 'Book a call', cs: 'Rezervovat hovor' },
     email: { en: 'EMAIL ME →', cs: 'NAPIŠTE MI →' },
     emailSubject: { en: 'Engagement inquiry — vojtechzicha.com', cs: 'Poptávka spolupráce — vojtechzicha.com' },
     downloadCv: { en: 'DOWNLOAD CV (PDF) →', cs: 'STÁHNOUT CV (PDF) →' },
@@ -170,8 +173,8 @@ export const UI = {
       cs: 'Máte platformu, která potřebuje architekta?',
     },
     contactNote: {
-      en: 'Email is the fastest channel — or reach out on LinkedIn. We can talk project work, part-time engagements, or one-off consulting.',
-      cs: 'Nejrychlejší cesta je e-mail — nebo se ozvěte na LinkedIn. Můžeme se bavit o projektech, spolupráci na část úvazku i jednorázových konzultacích.',
+      en: 'Book a 30-minute intro call directly in my calendar, or write me an email — both reach me, the call skips the scheduling back-and-forth. We can talk part-time engagements and one-off consulting.',
+      cs: 'Zarezervujte si třicetiminutový úvodní hovor přímo v mém kalendáři, nebo mi napište e-mail — obojí funguje, hovor jen ušetří domlouvání termínu. Můžeme se bavit o spolupráci na část úvazku i jednorázových konzultacích.',
     },
   },
   work: {

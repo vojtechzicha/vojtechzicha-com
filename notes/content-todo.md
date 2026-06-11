@@ -29,9 +29,9 @@ Paths are relative to the repo root.*
    The old site said "Czech police and financial services"; I rendered CZ as
    "Policie ČR a finanční správa". Verify the institution naming is the one you
    want public.
-6. **Availability flag** — `src/data/site.ts`, `availability`. Currently
-   "Available for freelancing — project or part-time" (from the old hire-me
-   banner). Set the real state; switch `state` to `'booked'` to turn the dot amber.
+6. ~~**Availability flag**~~ — done: "Booked until October 2026 — available for
+   part-time engagements" (`state: 'booked'`, amber dot). Update
+   `src/data/site.ts` → `availability` when the situation changes.
 
 ## Medium priority — voice & positioning
 
@@ -59,10 +59,10 @@ Paths are relative to the repo root.*
 
 ## Lower priority — decisions & infrastructure
 
-12. **Booking link** — the contact CTA is currently `mailto:` only. The
-    assignment recommends a Cal.com "book a 30-min call" as the primary CTA —
-    create the account and I/you wire the URL into `src/data/site.ts` (one field
-    + swap in `Home.astro`/`RolePage.astro`).
+12. ~~**Booking link**~~ — done: Google Calendar booking
+    (calendar.app.google/LLnCJUd7MFvhzsfv5) is the primary CTA on the homepage,
+    role pages, and footer; email stays as the secondary channel. URL lives in
+    `src/data/site.ts` → `booking`.
 13. **Role-specific CVs** — every role page's "Download CV" points at the single
     `/cv` PDF. The assignment plans per-role Typst-generated PDFs (`/cv-aws`,
     `/cv-devops`…); until then this is intentional.
@@ -84,6 +84,13 @@ Paths are relative to the repo root.*
     exist but are unused, and the repo must stay free of NDA content
     (assignment.md §4.5: private repo / submodule / encryption first). Case
     pages show the "full detail under NDA" strip — that's the only NDA surface.
+20. **Print documents** — `/print/` renders the CV (3 pp) and a general
+    letterhead/cover-letter template (1 p) from the same content base; open the
+    page and ⌘P → Save as PDF (A4). The page is `noindex` and outside the
+    sitemap. The letter's `[ bracketed ]` placeholders are intentional —
+    fill them per application. English only for now; a Czech print mirror can
+    be added the same way if needed. When you save a released CV PDF, archive
+    it in `public/files/` and repoint `/cv` in `public/_redirects` as before.
 
 ## Where things live (quick map)
 

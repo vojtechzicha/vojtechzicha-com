@@ -62,7 +62,7 @@ const tintDark = roleTintDark(r.hue)
       <p class="lede">{r.headline[lang]}</p>
       <p class="pitch">{r.pitch[lang]}</p>
       <div class="cta">
-        <a class="btn" href={mailto}>{UI.cta.email[lang]}</a>
+        <a class="btn" href={SITE.booking} rel="noopener">{UI.cta.book[lang]}</a>
         <a class="emaillink" href={SITE.cvPath}>{UI.cta.downloadCv[lang]}</a>
       </div>
       <div style="margin-top:24px">
@@ -141,7 +141,7 @@ const tintDark = roleTintDark(r.hue)
       <SectionHead num="05" title={UI.sections.contact.title[lang]} />
       <h2>{UI.cta.contactHeading[lang]}</h2>
       <div class="cta">
-        <a class="btn" href={mailto}>{UI.cta.email[lang]}</a>
+        <a class="btn" href={SITE.booking} rel="noopener">{UI.cta.book[lang]}</a>
         <a class="emaillink" href={mailto}>{SITE.email}</a>
       </div>
     </section>

@@ -1,28 +1,12 @@
 ---
 // Signature architecture diagram (design.md §3.6) — anonymized, data-driven.
 // Rectangles + mono labels + arrow glyphs only; faint engineering grid.
+import type { CollectionEntry } from 'astro:content'
 import type { Lang } from '../data/site'
 
-interface Box {
-  label: string
-  sub?: string
-  active?: boolean
-}
-interface Tier {
-  num: string
-  label: string
-  group?: boolean
-  boxes: Box[]
-}
 interface Props {
   lang: Lang
-  diagram: {
-    caption: string
-    title: { en: string; cs: string }
-    tiers: Tier[]
-    railLeft?: string
-    railRight?: string
-  }
+  diagram: NonNullable<CollectionEntry<'projects'>['data']['diagram']>
 }
 const { lang, diagram } = Astro.props
 const tiers = diagram.tiers
