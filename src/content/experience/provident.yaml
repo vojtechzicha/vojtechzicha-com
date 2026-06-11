@@ -1,0 +1,45 @@
+order: 5
+period: '2014 — 2017'
+title:
+  en: 'Solution Architect Team Lead'
+  cs: 'Vedoucí týmu solution architektů'
+org: 'Provident Financial s.r.o.'
+location: { en: 'Prague, Czech Republic', cs: 'Praha, Česká republika' }
+blocks:
+  - intro:
+      en: >-
+        Working as the Czech market team leader on the Solution Architecture
+        & Development team, I was responsible for a team of 3 solution
+        architects and 4 developers (ranging from internal employees to
+        contractors) in the following areas:
+      cs: >-
+        Jako vedoucí týmu Solution Architecture & Development pro český trh
+        jsem zodpovídal za tým 3 solution architektů a 4 vývojářů (od
+        interních zaměstnanců po kontraktory) v těchto oblastech:
+    bullets:
+      - en: >-
+          Managing the Czech Provident application architecture, integration
+          principles, and the common architecture repository.
+        cs: >-
+          Správa aplikační architektury českého Providentu, integračních
+          principů a společného architektonického repozitáře.
+      - en: >-
+          Delivering solution concepts, estimations, and integration
+          architecture for group-wide and local projects and programmes.
+        cs: >-
+          Dodávka konceptů řešení, odhadů a integrační architektury pro
+          skupinové i lokální projekty a programy.
+      - en: >-
+          Leading an in-house development team using the Kanban methodology,
+          coaching new team members, and setting the development standards.
+        cs: >-
+          Vedení interního vývojového týmu metodikou Kanban, koučování
+          nových členů a nastavování vývojových standardů.
+  - intro:
+      en: >-
+        During my time with Provident I also worked as Solutions Architect
+        and IT Systems Development Specialist.
+      cs: >-
+        Během působení v Providentu jsem prošel i rolemi Solutions Architect
+        a IT Systems Development Specialist.
+projects: []

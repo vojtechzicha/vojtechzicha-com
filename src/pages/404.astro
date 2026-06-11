@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro'
+import { SITE, UI } from '../data/site'
+---
+
+<Base lang="en" path="/404" title={`404 — ${SITE.name}`}>
+  <section class="wrap block">
+    <span class="eyebrow">404</span>
+    <h1>{UI.notFound.title.en}</h1>
+    <p class="pitch">{UI.notFound.body.en}</p>
+    <p class="pitch" lang="cs">{UI.notFound.body.cs}</p>
+    <div class="cta">
+      <a class="btn" href="/">{UI.notFound.back.en}</a>
+      <a class="emaillink" href="/cs/" lang="cs">{UI.notFound.back.cs}</a>
+    </div>
+  </section>
+</Base>

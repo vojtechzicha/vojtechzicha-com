@@ -1,0 +1,270 @@
+---
+// Homepage — renders the default role profile (assignment.md §4.1).
+// Blueprint: hero (roles-as-chips, availability, one CTA) → services →
+// selected work → experience → education & skills → credentials → about → contact.
+import { getCollection } from 'astro:content'
+import Base from '../layouts/Base.astro'
+import SectionHead from './SectionHead.astro'
+import RoleGlyph from './RoleGlyph.astro'
+import CaseSheet from './CaseSheet.astro'
+import { SITE, UI, roleTint, formatMonth, localePath, type Lang } from '../data/site'
+
+interface Props {
+  lang: Lang
+}
+const { lang } = Astro.props
+
+const roles = (await getCollection('roles')).sort((a, b) => a.data.order - b.data.order)
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order)
+const featured = projects.filter((p) => p.data.featured)
+const experience = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order)
+const education = (await getCollection('education')).sort((a, b) => a.data.order - b.data.order)
+const certs = (await getCollection('certifications')).sort((a, b) => a.data.order - b.data.order)
+const certGroups = (['cloud', 'ea', 'itsm', 'earlier'] as const).map((g) => ({
+  key: g,
+  items: certs.filter((c) => c.data.group === g),
+}))
+
+const mailto = `mailto:${SITE.email}?subject=${encodeURIComponent(UI.cta.emailSubject[lang])}`
+const projById = Object.fromEntries(projects.map((p) => [p.id, p]))
+---
+
+<Base lang={lang} path="/">
+  <!-- hero -->
+  <section class="wrap hero" id="top">
+    <span class="crop tl" aria-hidden="true"></span>
+    <span class="crop tr" aria-hidden="true"></span>
+    <div class="hero-cols">
+      <div class="hero-main">
+        <span class="eyebrow">{SITE.eyebrow[lang]}</span>
+        <h1>{SITE.tagline[lang]}</h1>
+        <p class="lede">{SITE.lede[lang]}</p>
+        <p class="pitch">{SITE.pitch[lang]}</p>
+        <nav class="chips" aria-label={UI.role.eyebrow[lang]}>
+          {
+            roles.map((r) => (
+              <a class={'chip' + (r.data.default ? ' on' : '')} href={localePath(lang, `/role/${r.id}/`)}>
+                <RoleGlyph
+                  type={r.data.glyph}
+                  color={r.data.default ? 'var(--on-accent)' : roleTint(r.data.hue)}
+                  size={11}
+                />
+                {r.data.title[lang]}
+              </a>
+            ))
+          }
+        </nav>
+        <p class="chip-hint">{UI.hero.chipHint[lang]}</p>
+        <div class="cta">
+          <a class="btn" href={mailto}>{UI.cta.email[lang]}</a>
+          <a class="emaillink" href={mailto}>{SITE.email}</a>
+        </div>
+        <div style="margin-top:24px">
+          <span class={'pill' + (SITE.availability.state === 'booked' ? ' booked' : '')}>
+            <span class="dot"></span>{SITE.availability.label[lang]}
+          </span>
+        </div>
+      </div>
+      <div class="portrait">
+        <span class="tick t" aria-hidden="true">280 × 350</span>
+        <span class="tick r" aria-hidden="true">portrait</span>
+        <div class="frame">
+          <img
+            src="/images/portrait.jpg"
+            alt={lang === 'cs' ? 'Vojtěch Zicha — portrét' : 'Vojtěch Zicha — portrait'}
+            width="800"
+            height="800"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- services -->
+  <section class="wrap block" id="services">
+    <SectionHead num="01" title={UI.sections.services.title[lang]} cap={UI.sections.services.cap[lang]} />
+    <div class="svcgrid">
+      {
+        SITE.services.map((s) => (
+          <div class="svc">
+            <div class="k">{s.k}</div>
+            <h3>{s.title[lang]}</h3>
+            <p>{s.desc[lang]}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- selected work -->
+  <section class="wrap block" id="work">
+    <SectionHead num="02" title={UI.sections.work.title[lang]} cap={UI.sections.work.cap[lang]} />
+    {featured.map((p) => <CaseSheet project={p} lang={lang} />)}
+    <p style="margin:22px 0 0">
+      <a class="caselink" href={localePath(lang, '/work/')} style="margin:0">{UI.work.allWork[lang]}</a>
+    </p>
+  </section>
+
+  <!-- experience -->
+  <section class="wrap block" id="experience">
+    <SectionHead
+      num="03"
+      title={UI.sections.experience.title[lang]}
+      cap={UI.sections.experience.cap[lang]}
+    />
+    {
+      experience.map((e) => (
+        <article class="xp">
+          <div class="when">
+            <div class="d">{e.data.period}</div>
+            {e.data.location && <div class="loc">{e.data.location[lang]}</div>}
+          </div>
+          <div class="what">
+            <h3>{e.data.title[lang]}</h3>
+            <span class="org">{e.data.org}</span>
+            {e.data.blocks.map((b) => (
+              <>
+                {b.intro && <p>{b.intro[lang]}</p>}
+                {b.bullets.length > 0 && (
+                  <ul>
+                    {b.bullets.map((li) => (
+                      <li>{li[lang]}</li>
+                    ))}
+                  </ul>
+                )}
+              </>
+            ))}
+            {e.data.projects.length > 0 && (
+              <div class="xprojects">
+                {e.data.projects.map(
+                  (pid) =>
+                    projById[pid] && (
+                      <a href={localePath(lang, `/work/${pid}/`)}>
+                        → {projById[pid].data.title[lang]}
+                      </a>
+                    )
+                )}
+              </div>
+            )}
+          </div>
+        </article>
+      ))
+    }
+  </section>
+
+  <!-- education & skills -->
+  <section class="wrap block" id="education">
+    <SectionHead num="04" title={UI.sections.educationSkills.title[lang]} />
+    <div class="edu-skills">
+      <div class="panelbox">
+        <div class="ph">{UI.education.title[lang]}</div>
+        {
+          education.map((ed) => (
+            <div class="edu-row">
+              <div class="d">{ed.data.period}</div>
+              <div class="t">
+                {ed.data.url ? <a href={ed.data.url}>{ed.data.title[lang]}</a> : ed.data.title[lang]}
+              </div>
+              <div class="s">{ed.data.school}</div>
+              {ed.data.note && <div class="n">{ed.data.note[lang]}</div>}
+            </div>
+          ))
+        }
+      </div>
+      <div class="panelbox">
+        <div class="ph">{UI.skills.title[lang]}</div>
+        {
+          Object.values(SITE.skills).map((sk) => (
+            <div class="skill-row">
+              <span>{sk.name[lang]}</span>
+              <span class={'lvl' + (sk.level === 'certified' ? ' cert' : '')}>
+                {UI.levels[sk.level][lang]}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- credentials -->
+  <section class="wrap block" id="credentials">
+    <SectionHead
+      num="05"
+      title={UI.sections.credentials.title[lang]}
+      cap={UI.sections.credentials.cap[lang]}
+    />
+    <div class="certgrid">
+      {
+        certGroups.map((g) => (
+          <div class="certgroup">
+            <div class="iss">{UI.certGroups[g.key][lang]}</div>
+            {g.items.map((c) => (
+              <div class="certrow">
+                <span class="t">
+                  {c.data.url ? <a href={c.data.url}>{c.data.title}</a> : c.data.title}
+                </span>
+                <span class="y">{formatMonth(c.data.date, lang)}</span>
+              </div>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- about -->
+  <section class="wrap block" id="about">
+    <SectionHead num="06" title={UI.sections.about.title[lang]} cap={UI.sections.about.cap[lang]} />
+    <div class="about-cols">
+      <div class="portrait" style="width:220px">
+        <div class="frame">
+          <img
+            src="/images/portrait.jpg"
+            alt=""
+            width="800"
+            height="800"
+            loading="lazy"
+          />
+        </div>
+      </div>
+      <div class="about-main">
+        <p class="leadp">{SITE.about[0][lang]}</p>
+        <p>{SITE.about[1][lang]}</p>
+        <div class="stats">
+          {
+            SITE.stats.map((st) => (
+              <div class="stat">
+                <div class="n">{st.n}</div>
+                <div class="l">{st.label[lang]}</div>
+              </div>
+            ))
+          }
+        </div>
+        <div class="facts">
+          {SITE.facts.location[lang]}<br />
+          {SITE.facts.languages[lang]}<br />
+          <a href={mailto}>{SITE.email}</a> · <a href={SITE.phoneHref}>{SITE.phone}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- contact -->
+  <section class="wrap block contact" id="contact">
+    <SectionHead num="07" title={UI.sections.contact.title[lang]} />
+    <h2>{UI.cta.contactHeading[lang]}</h2>
+    <p class="note">{UI.cta.contactNote[lang]}</p>
+    <div class="cta">
+      <a class="btn" href={mailto}>{UI.cta.email[lang]}</a>
+      <a class="emaillink" href={SITE.linkedin} rel="me noopener">LinkedIn</a>
+      <a class="emaillink" href={SITE.cvPath}>{lang === 'cs' ? 'CV (PDF)' : 'CV (PDF)'}</a>
+    </div>
+    <div style="margin-top:22px">
+      <span class={'pill' + (SITE.availability.state === 'booked' ? ' booked' : '')}>
+        <span class="dot"></span>{SITE.availability.label[lang]}
+      </span>
+    </div>
+  </section>
+</Base>

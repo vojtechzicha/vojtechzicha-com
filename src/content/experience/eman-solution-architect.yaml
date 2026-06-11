@@ -1,0 +1,50 @@
+order: 3
+period: '2019 — 2021'
+title:
+  en: 'Solution Architect for Automotive and IoT'
+  cs: 'Solution architekt pro Automotive a IoT'
+org: 'eMan a.s.'
+location: { en: 'Prague, Czech Republic', cs: 'Praha, Česká republika' }
+blocks:
+  - intro:
+      en: >-
+        Working as the Solution Architect for a mobile application
+        development company, I was responsible for:
+      cs: >-
+        Jako solution architekt společnosti vyvíjející mobilní aplikace jsem
+        zodpovídal za:
+    bullets:
+      - en: >-
+          Producing the presale documentation, working with clients on the
+          definition of new projects, preparing the initial model of
+          architecture and setup for development
+        cs: >-
+          přípravu presale dokumentace, práci s klienty na definici nových
+          projektů, úvodní model architektury a nastavení vývoje
+      - en: >-
+          Working as a member of a Scrum team, preparing the deliverables and
+          collaborating with the customer to define acceptance criteria and
+          the roadmap for next sprints
+        cs: >-
+          práci v rámci scrumového týmu — přípravu dodávek a spolupráci se
+          zákazníkem na akceptačních kritériích a roadmapě dalších sprintů
+      - en: >-
+          Design of the API and integration between systems, working on
+          system specifications for customers
+        cs: >-
+          návrh API a integrací mezi systémy, práci na systémových
+          specifikacích pro zákazníky
+      - en: >-
+          DevOps setup on corporate projects — cloud setup, development
+          guidelines, and the initial backend setup for mobile applications
+        cs: >-
+          DevOps setup korporátních projektů — cloud setup, vývojové
+          guidelines a úvodní backend pro mobilní aplikace
+  - intro:
+      en: >-
+        Projects also included the Minialarm platform architecture — the
+        consolidation of documentation and growth-opportunity designs.
+      cs: >-
+        Mezi projekty patřila i architektura platformy Minialarm —
+        konsolidace dokumentace a návrhy růstových příležitostí.
+projects: [mobile-platform]

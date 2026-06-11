@@ -1,0 +1,161 @@
+---
+// Role page — the same content base re-selected through one role lens
+// (assignment.md §4.1). Differentiated by tint + glyph, never by layout.
+import type { CollectionEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
+import Base from '../layouts/Base.astro'
+import SectionHead from './SectionHead.astro'
+import RoleGlyph from './RoleGlyph.astro'
+import CaseSheet from './CaseSheet.astro'
+import {
+  SITE,
+  UI,
+  roleTint,
+  roleTintDark,
+  formatMonth,
+  localePath,
+  type Lang,
+} from '../data/site'
+
+interface Props {
+  lang: Lang
+  role: CollectionEntry<'roles'>
+}
+const { lang, role } = Astro.props
+const r = role.data
+
+const allRoles = (await getCollection('roles')).sort((a, b) => a.data.order - b.data.order)
+const projects = await getCollection('projects')
+const certs = (await getCollection('certifications')).sort((a, b) => a.data.order - b.data.order)
+
+const roleProjects = r.projects
+  .map((id) => projects.find((p) => p.id === id))
+  .filter((p) => p !== undefined)
+const roleCerts = r.certs
+  .map((id) => certs.find((c) => c.id === id))
+  .filter((c) => c !== undefined)
+const roleSkills = r.skills.map((id) => SITE.skills[id]).filter(Boolean)
+const otherRoles = allRoles.filter((x) => x.id !== role.id)
+
+const idx = allRoles.findIndex((x) => x.id === role.id) + 1
+const title = `${r.title[lang]} — ${SITE.name}`
+const mailto = `mailto:${SITE.email}?subject=${encodeURIComponent(
+  `${r.title[lang]} — ${UI.cta.emailSubject[lang]}`
+)}`
+const tint = roleTint(r.hue)
+const tintDark = roleTintDark(r.hue)
+---
+
+<Base lang={lang} path={`/role/${role.id}/`} title={title} description={r.pitch[lang]}>
+  <div class="role-scope">
+    <section class="wrap role-hero">
+      <span class="crop tl" aria-hidden="true"></span>
+      <span class="crop tr" aria-hidden="true"></span>
+      <p style="margin:0 0 18px">
+        <a class="backlink" href={localePath(lang, '/')}>{UI.work.backHome[lang]}</a>
+      </p>
+      <span class="eyebrow" style="display:inline-flex;align-items:center;gap:9px">
+        <RoleGlyph type={r.glyph} color="var(--accent)" size={11} />
+        {UI.role.eyebrow[lang]} · {String(idx).padStart(2, '0')}/{String(allRoles.length).padStart(2, '0')}
+      </span>
+      <h1>{r.title[lang]}</h1>
+      <p class="lede">{r.headline[lang]}</p>
+      <p class="pitch">{r.pitch[lang]}</p>
+      <div class="cta">
+        <a class="btn" href={mailto}>{UI.cta.email[lang]}</a>
+        <a class="emaillink" href={SITE.cvPath}>{UI.cta.downloadCv[lang]}</a>
+      </div>
+      <div style="margin-top:24px">
+        <span class={'pill' + (SITE.availability.state === 'booked' ? ' booked' : '')}>
+          <span class="dot"></span>{SITE.availability.label[lang]}
+        </span>
+      </div>
+    </section>
+
+    <section class="wrap block">
+      <SectionHead num="01" title={UI.role.whatIDo[lang]} />
+      <div class="rolelist">
+        {
+          r.bullets.map((b, j) => (
+            <div class="decision">
+              <span class="b">{String(j + 1).padStart(2, '0')}</span>
+              <span>{b[lang]}</span>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="wrap block">
+      <SectionHead num="02" title={UI.role.topProjects[lang]} cap={UI.sections.work.cap[lang]} />
+      {roleProjects.map((p) => <CaseSheet project={p} lang={lang} lens={role.id} />)}
+    </section>
+
+    <section class="wrap block">
+      <SectionHead num="03" title={UI.role.relevantSkills[lang]} />
+      <div class="edu-skills">
+        <div class="panelbox">
+          <div class="ph">{UI.skills.title[lang]}</div>
+          {
+            roleSkills.map((sk) => (
+              <div class="skill-row">
+                <span>{sk.name[lang]}</span>
+                <span class={'lvl' + (sk.level === 'certified' ? ' cert' : '')}>
+                  {UI.levels[sk.level][lang]}
+                </span>
+              </div>
+            ))
+          }
+        </div>
+        <div class="panelbox">
+          <div class="ph">{UI.role.relevantCerts[lang]}</div>
+          {
+            roleCerts.map((c) => (
+              <div class="certrow">
+                <span class="t">
+                  {c.data.url ? <a href={c.data.url}>{c.data.title}</a> : c.data.title}
+                </span>
+                <span class="y">{formatMonth(c.data.date, lang)}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap block">
+      <SectionHead num="04" title={UI.role.otherRoles[lang]} />
+      <nav class="chips" aria-label={UI.role.otherRoles[lang]} style="max-width:none">
+        {
+          otherRoles.map((x) => (
+            <a class="chip" href={localePath(lang, `/role/${x.id}/`)}>
+              <RoleGlyph type={x.data.glyph} color={roleTint(x.data.hue)} size={11} />
+              {x.data.title[lang]}
+            </a>
+          ))
+        }
+      </nav>
+    </section>
+
+    <section class="wrap block contact">
+      <SectionHead num="05" title={UI.sections.contact.title[lang]} />
+      <h2>{UI.cta.contactHeading[lang]}</h2>
+      <div class="cta">
+        <a class="btn" href={mailto}>{UI.cta.email[lang]}</a>
+        <a class="emaillink" href={mailto}>{SITE.email}</a>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style define:vars={{ tint, tintDark }}>
+  /* role identity layer: re-tint the single accent for this audience */
+  .role-scope {
+    --accent: var(--tint);
+    --accent2: var(--tint);
+  }
+  :global([data-theme='dark']) .role-scope {
+    --accent: var(--tintDark);
+    --accent2: var(--tintDark);
+  }
+</style>

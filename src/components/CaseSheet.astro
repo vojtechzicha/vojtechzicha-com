@@ -1,0 +1,116 @@
+---
+// Spec-sheet case study card — meta rail + body (Direction 2 "Drafting").
+// Renders the PUBLIC visibility tier only; the NDA tier never reaches HTML.
+import type { CollectionEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
+import RoleGlyph from './RoleGlyph.astro'
+import Diagram from './Diagram.astro'
+import { UI, roleTint, localePath, type Lang } from '../data/site'
+
+interface Props {
+  project: CollectionEntry<'projects'>
+  lang: Lang
+  /** role id whose lens to apply to the summary (falls back to base) */
+  lens?: string
+  /** link the title + show the "read case study" link */
+  link?: boolean
+  /** render long-form sections + diagram (case-study page mode) */
+  full?: boolean
+}
+const { project, lang, lens, link = true, full = false } = Astro.props
+const p = project.data
+
+const roles = await getCollection('roles')
+const role = roles.find((r) => r.id === (lens ?? p.lens)) ?? roles.find((r) => r.id === p.lens)
+const summary = (lens && p.lenses[lens]?.[lang]) || p.summary.public[lang]
+const href = localePath(lang, `/work/${project.id}/`)
+---
+
+<article class="case">
+  <div class="meta">
+    <div class="row">
+      <div class="lab">{UI.work.client[lang]}</div>
+      <div class="v">
+        <span style="display:inline-flex;align-items:center;gap:7px">
+          {role && <RoleGlyph type={role.data.glyph} color={roleTint(role.data.hue)} size={10} />}
+          {p.mark}
+        </span>
+      </div>
+      <div class="v dim">{p.client.public[lang]}</div>
+    </div>
+    <div class="row">
+      <div class="lab">{UI.work.period[lang]}</div>
+      <div class="v">{p.period}</div>
+    </div>
+    {
+      role && (
+        <div class="row">
+          <div class="lab">{UI.work.lens[lang]}</div>
+          <div class="v acc">{role.data.title[lang]}</div>
+        </div>
+      )
+    }
+    {
+      p.stack.length > 0 && (
+        <div class="row">
+          <div class="lab">{UI.work.stack[lang]}</div>
+          <div class="v" style="line-height:1.7">
+            {p.stack.join(' · ')}
+          </div>
+        </div>
+      )
+    }
+  </div>
+  <div class="body">
+    <h3>
+      {link ? <a href={href}>{p.title[lang]}</a> : p.title[lang]}
+    </h3>
+    <p class="sum">{summary}</p>
+    {
+      p.outcome && (
+        <div class="outcome">
+          <span class="lbl">{UI.work.outcome[lang]}</span>
+          <span class="val">{p.outcome.public[lang]}</span>
+        </div>
+      )
+    }
+    {full && p.diagram && <Diagram lang={lang} diagram={p.diagram} />}
+    {
+      full && p.sections.length > 0 && (
+        <div class="casebody">
+          {p.sections.map((s) => (
+            <>
+              <h2>{s.heading[lang]}</h2>
+              {s.body.map((para) => (
+                <p>{para[lang]}</p>
+              ))}
+            </>
+          ))}
+        </div>
+      )
+    }
+    {
+      p.decisions.length > 0 && (
+        <div class="decisions">
+          {p.decisions.map((d, j) => (
+            <div class="decision">
+              <span class="b">{String(j + 1).padStart(2, '0')}</span>
+              <span>{d[lang]}</span>
+            </div>
+          ))}
+        </div>
+      )
+    }
+    {
+      p.ndaAvailable && (
+        <div class="ndastrip">
+          <span class="lock" aria-hidden="true">
+            ▦
+          </span>
+          {UI.work.nda[lang]}
+        </div>
+      )
+    }
+    {link && <a class="caselink" href={href}>{UI.work.readCaseStudy[lang]}</a>}
+  </div>
+</article>

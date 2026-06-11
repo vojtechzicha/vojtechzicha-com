@@ -1,0 +1,39 @@
+order: 4
+period: '2017 — 2018'
+title:
+  en: 'Web & Digital Platform Architect'
+  cs: 'Architekt webových a digitálních platforem'
+org: 'W.A.G. payment solutions, a.s.'
+location: { en: 'Prague, Czech Republic', cs: 'Praha, Česká republika' }
+blocks:
+  - intro:
+      en: >-
+        As a Solution Architect on the Digital Delivery team in a FinTech
+        environment, I was responsible for leading the transition of an
+        existing business towards newly enabled digital opportunities:
+      cs: >-
+        Jako solution architekt týmu Digital Delivery ve fintechovém
+        prostředí jsem vedl přechod zavedeného byznysu k nově otevřeným
+        digitálním příležitostem:
+    bullets:
+      - en: >-
+          Architected a greenfield web platform for digital projects based on
+          a Node.js serverless backend and a React SPA frontend.
+        cs: >-
+          Navrhl jsem greenfield webovou platformu pro digitální projekty
+          postavenou na serverless backendu v Node.js a React SPA frontendu.
+      - en: >-
+          Oversaw the creation of a business case and the successful delivery
+          of all advantages that come with a digital platform.
+        cs: >-
+          Dohlížel jsem na vznik business casu a úspěšné doručení všech
+          přínosů, které digitální platforma přináší.
+      - en: 'Integrated new digital projects into already existing backends.'
+        cs: 'Integroval jsem nové digitální projekty do stávajících backendů.'
+      - en: >-
+          Worked with multiple vendor and internal delivery teams to
+          collaborate on individual deliveries with a single goal in mind.
+        cs: >-
+          Koordinoval jsem spolupráci dodavatelských a interních týmů na
+          jednotlivých dodávkách se společným cílem.
+projects: []

@@ -1,0 +1,28 @@
+order: 3
+title: { en: 'Cloud Architect (AWS)', cs: 'Cloud architekt (AWS)' }
+glyph: triangle
+hue: 262
+headline:
+  en: 'AWS-certified architect for regulated, high-load platforms'
+  cs: 'AWS certifikovaný architekt pro regulované a vysoce zatížené platformy'
+pitch:
+  en: >-
+    AWS Certified Solutions Architect with production experience across AWS,
+    GCP, and Azure. I design cloud architectures for platforms where the
+    stakes are real — financial services, automotive, government — and own
+    the path from design to a running environment.
+  cs: >-
+    AWS Certified Solutions Architect s produkčními zkušenostmi napříč AWS,
+    GCP a Azure. Navrhuji cloudové architektury pro platformy, kde jde o
+    hodně — finanční služby, automotive, veřejná správa — a zodpovídám za
+    cestu od návrhu k běžícímu prostředí.
+bullets:
+  - en: 'Cloud architecture design and cloud setup for new platforms'
+    cs: 'Návrh cloudové architektury a cloud setup pro nové platformy'
+  - en: 'Kubernetes and containerized workloads in production'
+    cs: 'Kubernetes a kontejnerizované workloady v produkci'
+  - en: 'Infrastructure-as-code, monitoring, and operational management'
+    cs: 'Infrastructure-as-code, monitoring a provozní správa'
+projects: [loyalty-platform, connected-car, mobile-platform]
+skills: [cloud-aws, kubernetes, iac-monitoring, devops-cicd]
+certs: [aws-sa-associate, aws-cloud-practitioner]

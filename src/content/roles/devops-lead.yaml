@@ -1,0 +1,29 @@
+order: 5
+title: { en: 'DevOps Lead', cs: 'DevOps lead' }
+glyph: bar
+hue: 240
+headline:
+  en: 'Delivery infrastructure that teams actually adopt'
+  cs: 'Dodávková infrastruktura, kterou týmy skutečně přijmou'
+pitch:
+  en: >-
+    I have owned DevOps setups on corporate projects since 2019 — cloud
+    environments, CI/CD, development guidelines, and the internal developer
+    platform for a division of senior engineers. As IT Manager I also led
+    the IT Operations and DevOps teams and standardized service processes
+    using IT4IT.
+  cs: >-
+    DevOps setup korporátních projektů zodpovídám od roku 2019 — cloudová
+    prostředí, CI/CD, vývojové guidelines a interní vývojářskou platformu
+    pro divizi seniorních inženýrů. Jako IT manažer jsem zároveň vedl týmy
+    IT Operations a DevOps a standardizoval servisní procesy podle IT4IT.
+bullets:
+  - en: 'Internal developer platform and DX — standardized tooling, CI/CD, infrastructure baseline'
+    cs: 'Interní vývojářská platforma a DX — standardizovaný tooling, CI/CD, základ infrastruktury'
+  - en: 'DevOps setup for corporate projects: cloud setup, guidelines, initial backends'
+    cs: 'DevOps setup korporátních projektů: cloud setup, guidelines, úvodní backendy'
+  - en: 'Leadership of IT Operations and DevOps teams, IT4IT-based service processes'
+    cs: 'Vedení týmů IT Operations a DevOps, servisní procesy podle IT4IT'
+projects: [connected-car, loyalty-platform, mobile-platform]
+skills: [devops-cicd, kubernetes, iac-monitoring, cloud-gcp-azure]
+certs: [itil, aws-sa-associate]

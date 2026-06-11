@@ -1,0 +1,12 @@
+---
+import { getCollection } from 'astro:content'
+import RolePage from '../../components/RolePage.astro'
+
+export async function getStaticPaths() {
+  const roles = await getCollection('roles')
+  return roles.map((role) => ({ params: { slug: role.id }, props: { role } }))
+}
+const { role } = Astro.props
+---
+
+<RolePage lang="en" role={role} />

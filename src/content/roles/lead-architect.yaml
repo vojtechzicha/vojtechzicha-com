@@ -1,0 +1,28 @@
+order: 2
+title: { en: 'Lead Architect', cs: 'Vedoucí architekt' }
+glyph: square
+hue: 270
+headline:
+  en: 'Architecture leadership across teams and vendors'
+  cs: 'Vedení architektury napříč týmy a dodavateli'
+pitch:
+  en: >-
+    I have led architecture since 2014 — a team of 3 solution architects and
+    4 developers at Provident Financial, later the architecture strategy for
+    a 22-person cross-functional division at eMan. I set roadmaps, govern
+    standards, and review other people's designs without slowing them down.
+  cs: >-
+    Architekturu vedu od roku 2014 — tým 3 solution architektů a 4 vývojářů
+    v Provident Financial, později architektonickou strategii
+    dvaadvacetičlenné cross-funkční divize v eMan. Nastavuji roadmapy,
+    spravuji standardy a reviduji návrhy ostatních, aniž bych je brzdil.
+bullets:
+  - en: 'Architecture roadmaps and technology strategy aligned with commercial goals'
+    cs: 'Architektonické roadmapy a technologická strategie sladěná s obchodními cíli'
+  - en: 'SDLC governance — architecture review, integration patterns, quality gates, release process'
+    cs: 'Správa SDLC — review architektury, integrační vzory, quality gates, release proces'
+  - en: 'Common architecture repositories and integration principles shared across teams'
+    cs: 'Společné architektonické repozitáře a integrační principy sdílené napříč týmy'
+projects: [vignette-enforcement, landscape-planning, connected-car]
+skills: [togaf-ea, archimate-uml, integration, eda-microservices]
+certs: [togaf-certified, archimate-practitioner, itil]

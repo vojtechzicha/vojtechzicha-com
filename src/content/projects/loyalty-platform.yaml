@@ -1,0 +1,94 @@
+order: 3
+featured: true
+industry: { en: 'Consumer appliances', cs: 'Domácí spotřebiče' }
+mark: 'APPL'
+client:
+  public:
+    en: 'A large appliance producer'
+    cs: 'Velký výrobce domácích spotřebičů'
+period: '2019 — present'
+lens: cloud-architect-aws
+stack: ['GCP', 'Containers', 'AI product recognition']
+title:
+  en: 'Loyalty & customer activation platform'
+  cs: 'Platforma pro věrnostní program a aktivaci zákazníků'
+summary:
+  public:
+    en: >-
+      Architecture for two greenfield mobile applications serving B2C and
+      B2B customers, with a custom backend platform covering AI product
+      recognition, loyalty system management, and integration into existing
+      company systems — hosted on GCP using containerized technology.
+    cs: >-
+      Architektura dvou greenfield mobilních aplikací pro B2C a B2B
+      zákazníky a vlastní backendové platformy pokrývající AI rozpoznávání
+      produktů, správu věrnostního systému a integraci do stávajících
+      firemních systémů — provozováno na GCP v kontejnerech.
+lenses:
+  technology-leader:
+    en: >-
+      End-to-end architecture ownership of a greenfield B2C/B2B programme —
+      two mobile applications and a custom GCP backend — delivered as a
+      freelance architect embedded with the producer's teams.
+    cs: >-
+      Kompletní architektonická odpovědnost za greenfield B2C/B2B program —
+      dvě mobilní aplikace a vlastní backend na GCP — dodáno jako freelance
+      architekt po boku týmů výrobce.
+sections:
+  - heading: { en: 'Context', cs: 'Kontext' }
+    body:
+      - en: >-
+          A large appliance producer wanted to activate its customers
+          directly: a loyalty programme for consumers and a companion
+          experience for business partners, neither of which existing
+          company systems could carry.
+        cs: >-
+          Velký výrobce domácích spotřebičů chtěl aktivovat zákazníky přímo:
+          věrnostní program pro spotřebitele a doprovodnou aplikaci pro
+          obchodní partnery — ani jedno nemohly stávající firemní systémy
+          unést.
+  - heading: { en: 'The platform', cs: 'Platforma' }
+    body:
+      - en: >-
+          I designed the architecture for two greenfield mobile applications
+          (B2C and B2B) and the custom backend platform behind them. The
+          backend covers AI product recognition — customers register a
+          product by photographing it — loyalty system management, and
+          integration into the producer's existing systems. The whole
+          platform runs on GCP using containerized technology.
+        cs: >-
+          Navrhl jsem architekturu dvou greenfield mobilních aplikací (B2C a
+          B2B) a vlastní backendové platformy za nimi. Backend pokrývá AI
+          rozpoznávání produktů — zákazník zaregistruje výrobek tím, že ho
+          vyfotí — správu věrnostního programu a integraci do stávajících
+          systémů výrobce. Celá platforma běží na GCP v kontejnerech.
+diagram:
+  caption: 'FIG.01'
+  title:
+    en: 'Loyalty platform — anonymized, indicative'
+    cs: 'Věrnostní platforma — anonymizováno, ilustrativní'
+  tiers:
+    - num: '01'
+      label: 'Clients'
+      boxes:
+        - { label: 'b2c app', sub: 'consumers' }
+        - { label: 'b2b app', sub: 'partners' }
+    - num: '02'
+      label: 'Edge'
+      boxes:
+        - { label: 'api gateway', active: true }
+    - num: '03'
+      label: 'Compute · GCP'
+      group: true
+      boxes:
+        - { label: 'loyalty service', active: true }
+        - { label: 'ai recognition' }
+        - { label: 'integration layer' }
+    - num: '04'
+      label: 'Company systems'
+      boxes:
+        - { label: 'erp / crm', sub: 'existing', active: true }
+        - { label: 'data stores' }
+  railLeft: 'hosted on gcp — containerized'
+  railRight: 'existing company systems stay authoritative'
+ndaAvailable: true

@@ -1,0 +1,45 @@
+order: 6
+featured: false
+industry: { en: 'Government', cs: 'Veřejná správa' }
+mark: 'GOV'
+client:
+  public:
+    en: 'Czech public administration'
+    cs: 'Veřejná správa ČR'
+period: '2022 — 2026'
+lens: lead-architect
+stack: []
+title:
+  en: 'Digital landscape planning system'
+  cs: 'Systém pro digitální územní plánování'
+summary:
+  public:
+    en: >-
+      Architecture design for a large-scale government digitalization
+      project: a system for digital landscape planning.
+    cs: >-
+      Návrh architektury pro rozsáhlý vládní digitalizační projekt: systém
+      pro digitální územní plánování.
+sections:
+  - heading: { en: 'Context', cs: 'Kontext' }
+    body:
+      - en: >-
+          As part of the Czech government's digitalization programme,
+          landscape planning is moving from paper-based processes to a
+          digital system — one of the larger public-sector digitalization
+          projects of its time.
+        cs: >-
+          V rámci vládního digitalizačního programu přechází územní
+          plánování z papírových procesů na digitální systém — jeden z
+          největších digitalizačních projektů veřejného sektoru své doby.
+  - heading: { en: 'My role', cs: 'Moje role' }
+    body:
+      - en: >-
+          As Head of Technology of eMan's Automotive & Industry 4.0 division
+          I was responsible for the architecture design of the system within
+          this large-scale digitalization effort.
+        cs: >-
+          Jako Head of Technology divize Automotive & Industry 4.0 ve
+          společnosti eMan jsem zodpovídal za návrh architektury systému v
+          rámci tohoto rozsáhlého digitalizačního projektu.
+ndaAvailable: true

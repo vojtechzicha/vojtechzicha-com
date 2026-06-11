@@ -1,0 +1,65 @@
+order: 1
+featured: true
+industry: { en: 'Government', cs: 'Veřejná správa' }
+mark: 'GOV'
+client:
+  public:
+    en: 'Czech police & financial administration'
+    cs: 'Policie ČR a finanční správa'
+period: '2022 — 2026'
+lens: solution-architect
+stack: []
+title:
+  en: 'Digital vignette enforcement platform'
+  cs: 'Platforma pro digitální kontrolu dálničních známek'
+summary:
+  public:
+    en: >-
+      Architecture design for the enforcement platform used by Czech police
+      and financial services to check and validate the possession of digital
+      vignettes — a state-scale system with strict availability and security
+      requirements.
+    cs: >-
+      Návrh architektury platformy, kterou Policie ČR a finanční správa
+      používají ke kontrole a ověřování úhrady digitálních dálničních
+      známek — systém v měřítku státu s přísnými požadavky na dostupnost
+      a bezpečnost.
+sections:
+  - heading: { en: 'Context', cs: 'Kontext' }
+    body:
+      - en: >-
+          When the Czech Republic replaced paper highway vignettes with a
+          digital system, enforcement had to change with it: police patrols
+          and the financial administration needed a way to check, in the
+          field and in real time, whether a passing vehicle has a valid
+          vignette.
+        cs: >-
+          Když Česká republika nahradila papírové dálniční známky digitálním
+          systémem, musela se změnit i kontrola: policejní hlídky a finanční
+          správa potřebovaly způsob, jak v terénu a v reálném čase ověřit,
+          zda má projíždějící vozidlo platnou známku.
+  - heading: { en: 'My role', cs: 'Moje role' }
+    body:
+      - en: >-
+          As Head of Technology of eMan's Automotive & Industry 4.0 division
+          I owned the architecture design of the enforcement platform — the
+          overall solution shape, its integration into state systems, and the
+          standards the delivery teams built against.
+        cs: >-
+          Jako Head of Technology divize Automotive & Industry 4.0 ve
+          společnosti eMan jsem zodpovídal za návrh architektury kontrolní
+          platformy — celkovou podobu řešení, jeho integraci do státních
+          systémů a standardy, podle kterých dodávkové týmy stavěly.
+  - heading: { en: 'Constraints', cs: 'Omezení' }
+    body:
+      - en: >-
+          An enforcement system is only useful if it answers every time: the
+          platform carries strict availability requirements, and — as a state
+          system handling vehicle and payment data — equally strict security
+          requirements.
+        cs: >-
+          Kontrolní systém je užitečný, jen pokud odpoví pokaždé: platforma
+          nese přísné požadavky na dostupnost a — jako státní systém
+          pracující s údaji o vozidlech a platbách — stejně přísné požadavky
+          na bezpečnost.
+ndaAvailable: true

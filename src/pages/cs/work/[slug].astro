@@ -1,0 +1,12 @@
+---
+import { getCollection } from 'astro:content'
+import CasePage from '../../../components/CasePage.astro'
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects')
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }))
+}
+const { project } = Astro.props
+---
+
+<CasePage lang="cs" project={project} />

@@ -1,0 +1,23 @@
+order: 1
+period: '2019 — present'
+title:
+  en: 'Freelance Solution and Cloud Architect'
+  cs: 'Freelance solution a cloud architekt'
+org: 'Self-employed'
+location: { en: 'Prague, Czech Republic', cs: 'Praha, Česká republika' }
+blocks:
+  - intro:
+      en: >-
+        As a freelance solution architect I offer the following services to
+        several clients on a project or part-time basis:
+      cs: >-
+        Jako freelance solution architekt nabízím několika klientům na
+        projektové bázi nebo na část úvazku tyto služby:
+    bullets:
+      - en: 'Mentoring of customer engineers, training of clients and internal staff.'
+        cs: 'Mentoring inženýrů zákazníka, školení klientů a interních týmů.'
+      - en: 'Ensuring the deployment of high-quality deliverables to the client environment.'
+        cs: 'Zajištění nasazení kvalitních dodávek do prostředí klienta.'
+      - en: 'Providing technical architecture expertise and solution design guidance.'
+        cs: 'Expertiza v technické architektuře a vedení návrhu řešení.'
+projects: [loyalty-platform, odoo-crm-erp]

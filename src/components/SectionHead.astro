@@ -1,0 +1,15 @@
+---
+interface Props {
+  num: string
+  title: string
+  cap?: string
+}
+const { num, title, cap } = Astro.props
+---
+
+<div class="sechead">
+  <span class="secnum">{num}</span>
+  <h2 class="sectitle" style="margin:0">{title}</h2>
+  <span class="secrule"></span>
+  {cap && <span class="seccap">{cap}</span>}
+</div>

@@ -1,0 +1,28 @@
+order: 7
+title: { en: 'Technology Leader', cs: 'Technologický lídr' }
+glyph: circle
+hue: 248
+headline:
+  en: 'Interim or fractional head of technology'
+  cs: 'Interim nebo fractional vedení technologií'
+pitch:
+  en: >-
+    Four years as Head of Technology of eMan's Automotive & Industry 4.0
+    division: the 2–3 year architecture roadmap, SDLC governance, presale
+    leadership, and a cross-functional team of 22 — with the IT Manager
+    agenda included. I build the team that owns the platform after I leave.
+  cs: >-
+    Čtyři roky jako Head of Technology divize Automotive & Industry 4.0 v
+    eMan: architektonická roadmapa na 2–3 roky, správa SDLC, vedení presale
+    aktivit a cross-funkční tým 22 lidí — včetně agendy IT manažera. Stavím
+    tým, který platformu vlastní i po mém odchodu.
+bullets:
+  - en: 'Technology strategy and 2–3 year architecture roadmaps for a division'
+    cs: 'Technologická strategie a architektonické roadmapy divize na 2–3 roky'
+  - en: 'Mentoring and development of technology teams, fostering senior contributors'
+    cs: 'Mentoring a rozvoj technologických týmů, podpora seniorních inženýrů'
+  - en: 'Presale leadership — translating complex technical concepts for business stakeholders'
+    cs: 'Vedení presale aktivit — překlad složitých technických konceptů pro byznys'
+projects: [vignette-enforcement, connected-car, odoo-crm-erp]
+skills: [togaf-ea, eda-microservices, devops-cicd, integration]
+certs: [togaf-certified, itil, aws-sa-associate]
