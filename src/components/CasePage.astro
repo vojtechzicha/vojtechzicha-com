@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import Base from '../layouts/Base.astro'
+import SectionHead from './SectionHead.astro'
+import CaseSheet from './CaseSheet.astro'
+import { SITE, UI, localePath, type Lang } from '../data/site'
+
+interface Props {
+  lang: Lang
+  project: CollectionEntry<'projects'>
+}
+const { lang, project } = Astro.props
+const p = project.data
+const title = `${p.title[lang]} — ${SITE.name}`
+const description = p.summary.public[lang]
+---
+
+<Base lang={lang} path={`/work/${project.id}/`} title={title} description={description}>
+  <section class="wrap block">
+    <p style="margin:0 0 18px">
+      <a class="backlink" href={localePath(lang, '/work/')}>← {UI.work.indexTitle[lang]}</a>
+    </p>
+    <SectionHead num={p.mark} title={p.industry[lang]} cap={UI.work.indexCap[lang]} />
+    <CaseSheet project={project} lang={lang} link={false} full={true} />
+  </section>
+</Base>

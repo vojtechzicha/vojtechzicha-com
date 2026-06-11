@@ -1,0 +1,8 @@
+order: 2
+period: '2023 — 2026'
+title: { en: 'Economics and Management (Bc.)', cs: 'Ekonomika a management (Bc.)' }
+school: 'Newton University'
+note:
+  en: 'Specialization in Global Entrepreneurship & Management.'
+  cs: 'Specializace Global Entrepreneurship & Management.'
+url: '/bc'

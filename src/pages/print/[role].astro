@@ -1,0 +1,12 @@
+---
+import { getCollection } from 'astro:content'
+import CvPrint from '../../components/CvPrint.astro'
+
+export async function getStaticPaths() {
+  const roles = await getCollection('roles')
+  return roles.map((role) => ({ params: { role: role.id }, props: { role } }))
+}
+const { role } = Astro.props
+---
+
+<CvPrint role={role} />

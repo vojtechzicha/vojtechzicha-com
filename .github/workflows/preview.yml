@@ -17,10 +17,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # Chromium renders the CV PDFs from the print sources during the build
+      - name: Build (site + CV PDFs)
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          npm run build
+
       - name: Deploy preview to Netlify
         id: deploy
         run: |
-          npx netlify-cli deploy --dir=. --alias="pr-${{ github.event.number }}" --json > deploy.json
+          npx netlify-cli deploy --dir=dist --alias="pr-${{ github.event.number }}" --json > deploy.json
           echo "url=$(jq -r '.deploy_url' deploy.json)" >> "$GITHUB_OUTPUT"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
@@ -28,7 +40,7 @@ jobs:
 
       # Beta site always shows the most recently pushed PR (last write wins)
       - name: Deploy to beta site
-        run: npx netlify-cli deploy --dir=. --prod
+        run: npx netlify-cli deploy --dir=dist --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: 1725013d-a36d-4923-b9f9-e0034125ebea

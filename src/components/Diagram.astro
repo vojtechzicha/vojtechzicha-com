@@ -1,0 +1,75 @@
+---
+// Signature architecture diagram (design.md §3.6) — anonymized, data-driven.
+// Rectangles + mono labels + arrow glyphs only; faint engineering grid.
+import type { CollectionEntry } from 'astro:content'
+import type { Lang } from '../data/site'
+
+interface Props {
+  lang: Lang
+  diagram: NonNullable<CollectionEntry<'projects'>['data']['diagram']>
+}
+const { lang, diagram } = Astro.props
+const tiers = diagram.tiers
+---
+
+<figure class="diagram" style="margin:20px 0 0">
+  <div class="dhead">
+    <span class="cap">{diagram.caption}</span>
+    <figcaption class="ttl">{diagram.title[lang]}</figcaption>
+  </div>
+  <div class="dbody">
+    <div class="tiers">
+      {
+        tiers.map((tier, i) => (
+          <>
+            <div class={'tier' + (tier.group ? ' grp' : '')}>
+              <div class="tierhead">
+                <b>{tier.num}</b>&nbsp;&nbsp;{tier.label}
+              </div>
+              {tier.group ? (
+                <div class="dgroup">
+                  {tier.boxes.map((b) => (
+                    <div class={'dbox' + (b.active ? ' active' : '')}>
+                      <div class="l">{b.label}</div>
+                      {b.sub && <div class="s">{b.sub}</div>}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                tier.boxes.map((b) => (
+                  <div class={'dbox' + (b.active ? ' active' : '')}>
+                    <div class="l">{b.label}</div>
+                    {b.sub && <div class="s">{b.sub}</div>}
+                  </div>
+                ))
+              )}
+            </div>
+            {i < tiers.length - 1 && (
+              <div class="arrow" aria-hidden="true">
+                →
+              </div>
+            )}
+          </>
+        ))
+      }
+    </div>
+    {
+      (diagram.railLeft || diagram.railRight) && (
+        <div class="rails">
+          {diagram.railLeft && (
+            <div class="r1">
+              <b>╌╌ </b>
+              {diagram.railLeft}
+            </div>
+          )}
+          {diagram.railRight && (
+            <div class="r2">
+              {diagram.railRight}
+              <b> ╌╌</b>
+            </div>
+          )}
+        </div>
+      )
+    }
+  </div>
+</figure>

@@ -1,0 +1,53 @@
+order: 4
+featured: false
+industry: { en: 'Energy — solar', cs: 'Energetika — solární' }
+mark: 'ENRG'
+client:
+  public:
+    en: 'A solar technology vendor'
+    cs: 'Dodavatel solárních řešení'
+period: '2019 — present'
+lens: technology-leader
+stack: ['Odoo', 'Event sourcing', 'Message queues']
+title:
+  en: 'CRM & ERP landscape transformation on Odoo'
+  cs: 'Transformace CRM a ERP prostředí na platformě Odoo'
+summary:
+  public:
+    en: >-
+      Leading the transformation of a solar vendor's IT landscape to a new
+      set of technologies built on the custom-developed CRM and ERP platform
+      Odoo — including a large-scale integration platform based on
+      event-sourcing and queuing principles.
+    cs: >-
+      Vedení transformace IT prostředí dodavatele solárních řešení na nové
+      technologie postavené na zákaznicky vyvinuté CRM a ERP platformě
+      Odoo — včetně rozsáhlé integrační platformy založené na principech
+      event sourcingu a front zpráv.
+sections:
+  - heading: { en: 'Context', cs: 'Kontext' }
+    body:
+      - en: >-
+          A growing solar vendor had outgrown its IT landscape. The business
+          needed one coherent platform for CRM and ERP — and a way for the
+          systems around it to exchange data reliably as volumes grew.
+        cs: >-
+          Rostoucí dodavatel solárních řešení přerostl své IT prostředí.
+          Firma potřebovala jednu soudržnou platformu pro CRM a ERP — a
+          způsob, jak si okolní systémy budou s rostoucími objemy spolehlivě
+          vyměňovat data.
+  - heading: { en: 'My role', cs: 'Moje role' }
+    body:
+      - en: >-
+          As a freelance architect I led the transformation effort: moving
+          the landscape to a new technology set centred on a custom-developed
+          Odoo CRM/ERP platform, and designing the large-scale integration
+          platform — built on event-sourcing and queuing principles — that
+          connects it to the rest of the company.
+        cs: >-
+          Jako freelance architekt jsem transformaci vedl: převod prostředí
+          na nové technologie s centrem v zákaznicky vyvinuté CRM/ERP
+          platformě Odoo a návrh rozsáhlé integrační platformy — postavené
+          na principech event sourcingu a front zpráv — která ji propojuje
+          se zbytkem firmy.
+ndaAvailable: true

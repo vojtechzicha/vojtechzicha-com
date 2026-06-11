@@ -1,0 +1,194 @@
+---
+import '../styles/global.css'
+import { SITE, UI, localePath, type Lang } from '../data/site'
+
+interface Props {
+  lang: Lang
+  title?: string
+  description?: string
+  /** path of this page without the /cs prefix, e.g. "/" or "/work/foo/" */
+  path: string
+}
+const { lang, title, description, path } = Astro.props
+const pageTitle = title ?? SITE.title[lang]
+const pageDesc = description ?? SITE.description[lang]
+const canonical = SITE.url + localePath(lang, path)
+const altEn = SITE.url + localePath('en', path)
+const altCs = SITE.url + localePath('cs', path)
+const otherLangHref = lang === 'en' ? localePath('cs', path) : localePath('en', path)
+const mailto = `mailto:${SITE.email}?subject=${encodeURIComponent(UI.cta.emailSubject[lang])}`
+const home = localePath(lang, '/')
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE.name,
+  url: SITE.url,
+  email: `mailto:${SITE.email}`,
+  jobTitle: lang === 'cs' ? 'Solution a cloud architekt' : 'Solution & Cloud Architect',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Prague',
+    addressCountry: 'CZ',
+  },
+  sameAs: [SITE.linkedin, SITE.github],
+}
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={altEn} />
+    <link rel="alternate" hreflang="cs" href={altCs} />
+    <link rel="alternate" hreflang="x-default" href={altEn} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      href="/fonts/archivo-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/jetbrains-mono-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${SITE.url}/images/portrait.jpg`} />
+    <meta property="og:locale" content={lang === 'cs' ? 'cs_CZ' : 'en_US'} />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script is:inline>
+      // theme: explicit choice in localStorage wins, else system preference
+      ;(function () {
+        try {
+          var t = localStorage.getItem('theme')
+          if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.dataset.theme = 'dark'
+          }
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <header class="bar">
+      <a class="brand" href={home}>
+        <span class="mark">{SITE.monogram}</span>
+        {SITE.name}
+      </a>
+      <nav class="nav" aria-label={lang === 'cs' ? 'Hlavní navigace' : 'Main navigation'}>
+        <a href={`${home}#work`}>{UI.nav.work[lang]}</a>
+        <a href={`${home}#services`}>{UI.nav.services[lang]}</a>
+        <a href={`${home}#about`}>{UI.nav.about[lang]}</a>
+        <a href={`${home}#contact`}>{UI.nav.contact[lang]}</a>
+      </nav>
+      <span class="lang">
+        {
+          lang === 'cs' ? (
+            <>
+              <span class="on">CZ</span> / <a href={otherLangHref}>EN</a>
+            </>
+          ) : (
+            <>
+              <a href={otherLangHref}>CZ</a> / <span class="on">EN</span>
+            </>
+          )
+        }
+      </span>
+      <button class="theme-toggle" id="theme-toggle" aria-label={UI.theme.toggle[lang]}>
+        <svg
+          class="moon"
+          width="14"
+          height="14"
+          viewBox="0 0 14 14"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.4"
+        >
+          <path d="M12 8.5A5.5 5.5 0 1 1 5.5 2 4.3 4.3 0 0 0 12 8.5Z"></path>
+        </svg>
+        <svg
+          class="sun"
+          width="14"
+          height="14"
+          viewBox="0 0 14 14"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.4"
+        >
+          <circle cx="7" cy="7" r="3"></circle>
+          <path d="M7 .8v1.7M7 11.5v1.7M.8 7h1.7M11.5 7h1.7M2.6 2.6l1.2 1.2M10.2 10.2l1.2 1.2M11.4 2.6l-1.2 1.2M3.8 10.2l-1.2 1.2"
+          ></path>
+        </svg>
+      </button>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="foot">
+      <div class="cols">
+        <div>
+          <a class="brand" href={home} style="display:inline-flex">
+            <span class="mark">{SITE.monogram}</span>
+            {SITE.name}
+          </a>
+          <p class="blurb">{UI.footer.blurb[lang]}</p>
+        </div>
+        <div>
+          <h4>{UI.footer.site[lang]}</h4>
+          <a href={`${home}#work`}>{UI.nav.work[lang]}</a>
+          <a href={`${home}#services`}>{UI.nav.services[lang]}</a>
+          <a href={`${home}#about`}>{UI.nav.about[lang]}</a>
+          <a href={SITE.booking} rel="noopener">{UI.cta.bookShort[lang]}</a>
+          <a href={SITE.cvPath}>{lang === 'cs' ? 'Stáhnout CV (PDF)' : 'Download CV (PDF)'}</a>
+        </div>
+        <div lang="cs">
+          <h4 lang={lang}>{UI.footer.legalHeading[lang]}</h4>
+          <div class="legal-lines">
+            {SITE.legal.identity}<br />
+            {SITE.legal.address}<br />
+            {SITE.legal.bank}<br />
+            {SITE.legal.register}
+          </div>
+        </div>
+      </div>
+      <div class="legal">
+        <span>
+          <a href={mailto} style="display:inline;padding:0">{SITE.email}</a> ·
+          <a href={SITE.phoneHref} style="display:inline;padding:0">{SITE.phone}</a> ·
+          <a href={SITE.linkedin} rel="me noopener" style="display:inline;padding:0">LinkedIn</a> ·
+          <a href={SITE.github} rel="me noopener" style="display:inline;padding:0">GitHub</a>
+        </span>
+        <span>© {new Date().getFullYear()} {SITE.name}</span>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById('theme-toggle')
+      btn?.addEventListener('click', () => {
+        const root = document.documentElement
+        const dark = root.dataset.theme === 'dark'
+        if (dark) {
+          delete root.dataset.theme
+          localStorage.setItem('theme', 'light')
+        } else {
+          root.dataset.theme = 'dark'
+          localStorage.setItem('theme', 'dark')
+        }
+      })
+    </script>
+  </body>
+</html>

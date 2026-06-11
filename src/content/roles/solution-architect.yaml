@@ -1,0 +1,30 @@
+order: 1
+cvSlug: 'solution'
+default: true
+title: { en: 'Solution Architect', cs: 'Solution architekt' }
+glyph: diamond
+hue: 255
+headline:
+  en: 'End-to-end solution architecture for enterprise platforms'
+  cs: 'Kompletní architektura řešení pro enterprise platformy'
+pitch:
+  en: >-
+    I take a business problem and carry it from the first whiteboard to a
+    running platform — architecture, integration design, and the delivery
+    standards that keep it maintainable. Over 11 years across financial
+    services, automotive, energy, and government-scale systems.
+  cs: >-
+    Převezmu byznysový problém a dovedu ho od první tabule až k běžící
+    platformě — architektura, návrh integrací a dodávkové standardy, díky
+    kterým zůstane udržitelná. Více než 11 let ve finančních službách,
+    automotive, energetice a systémech v měřítku státu.
+bullets:
+  - en: 'Solution concepts, estimations, and integration architecture for local and group-wide programmes'
+    cs: 'Koncepty řešení, odhady a integrační architektura pro lokální i skupinové programy'
+  - en: 'API and system integration design, system specifications for customers'
+    cs: 'Návrh API a integrací mezi systémy, systémové specifikace pro zákazníky'
+  - en: 'Presale documentation and initial architecture models for new projects'
+    cs: 'Presale dokumentace a úvodní architektonické modely nových projektů'
+projects: [vignette-enforcement, mobile-platform, odoo-crm-erp]
+skills: [togaf-ea, archimate-uml, eda-microservices, integration]
+certs: [togaf-certified, archimate-practitioner, aws-sa-associate]

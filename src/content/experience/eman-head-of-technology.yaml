@@ -1,0 +1,41 @@
+order: 2
+period: '2022 — 2026'
+title:
+  en: 'Head of Technology'
+  cs: 'Head of Technology'
+org: 'eMan a.s.'
+location: { en: 'Prague, Czech Republic', cs: 'Praha, Česká republika' }
+blocks:
+  - intro:
+      en: >-
+        Led the technology efforts in the Automotive & Industry 4.0 division,
+        owning architecture strategy and the engineering platform for a
+        cross-functional team of 22 — including 3 solution architects and 10
+        senior specialists. Responsible for:
+      cs: >-
+        Vedl jsem technologickou stránku divize Automotive & Industry 4.0 —
+        architektonickou strategii a inženýrskou platformu pro cross-funkční
+        tým 22 lidí, včetně 3 solution architektů a 10 seniorních
+        specialistů. Zodpovídal jsem za:
+    bullets:
+      - en: 'defining the 2–3 year architectural roadmap and technology strategy for the division'
+        cs: 'definici architektonické roadmapy a technologické strategie divize na 2–3 roky'
+      - en: 'establishing and governing SDLC standards — architecture review, integration patterns, quality gates, and release process'
+        cs: 'zavedení a správu SDLC standardů — review architektury, integrační vzory, quality gates a release proces'
+      - en: 'driving the internal developer platform and DX, and reducing technical debt to keep the architecture modular and agile'
+        cs: 'rozvoj interní vývojářské platformy a DX a snižování technického dluhu, aby architektura zůstala modulární a pružná'
+      - en: 'mentoring and development of technology teams'
+        cs: 'mentoring a rozvoj technologických týmů'
+      - en: 'preparing and leading the efforts for presale activities'
+        cs: 'přípravu a vedení presale aktivit'
+  - intro:
+      en: 'As part of the job, the responsibilities of IT Manager also included:'
+      cs: 'Součástí pozice byla i agenda IT manažera:'
+    bullets:
+      - en: 'leading the IT Operations and DevOps teams'
+        cs: 'vedení týmů IT Operations a DevOps'
+      - en: 'standardizing the ticketing and service request processes using the IT4IT methodology'
+        cs: 'standardizace ticketingu a servisních požadavků podle metodiky IT4IT'
+      - en: 'designing a new infrastructure landscape and implementing the transition project'
+        cs: 'návrh nového infrastrukturního prostředí a realizace přechodového projektu'
+projects: [vignette-enforcement, landscape-planning, connected-car]

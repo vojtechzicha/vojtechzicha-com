@@ -1,0 +1,56 @@
+order: 5
+featured: false
+industry: { en: 'Automotive', cs: 'Automotive' }
+mark: 'AUTO'
+client:
+  public:
+    en: "Czech's largest automotive producer"
+    cs: 'Největší český výrobce automobilů'
+period: '2019 — 2021'
+lens: solution-architect
+stack: ['Cloud microservices', 'Clean Architecture', 'Mobile']
+title:
+  en: 'Mobile application platform, next generation'
+  cs: 'Nová generace platformy mobilních aplikací'
+summary:
+  public:
+    en: >-
+      Design of the architecture for a new version of the mobile application
+      platform of Czech's largest automotive producer — Clean Architecture
+      principles on mobile, cloud microservices on the backend — with the new
+      design patterns approved and deployed across several application teams.
+    cs: >-
+      Návrh architektury nové verze platformy mobilních aplikací největšího
+      českého výrobce automobilů — principy Clean Architecture v mobilních
+      aplikacích, cloudové mikroslužby na backendu — se schválením a
+      nasazením nových návrhových vzorů napříč několika aplikačními týmy.
+outcome:
+  public:
+    en: 'New design patterns approved and deployed across several application teams'
+    cs: 'Nové návrhové vzory schváleny a nasazeny napříč několika aplikačními týmy'
+sections:
+  - heading: { en: 'Context', cs: 'Kontext' }
+    body:
+      - en: >-
+          Czech's largest automotive producer maintains a family of mobile
+          applications built by several teams in parallel. A new platform
+          version was the opportunity to align them on one architecture.
+        cs: >-
+          Největší český výrobce automobilů udržuje rodinu mobilních
+          aplikací, které paralelně staví několik týmů. Nová verze platformy
+          byla příležitostí sjednotit je na jedné architektuře.
+  - heading: { en: 'My role', cs: 'Moje role' }
+    body:
+      - en: >-
+          As Solution Architect for Automotive and IoT at eMan I designed the
+          architecture of the new platform version: Clean Architecture
+          principles for the mobile applications and cloud-hosted
+          microservices for the backend. I then took the patterns through
+          approval and deployment across several application teams.
+        cs: >-
+          Jako Solution Architect pro Automotive a IoT v eMan jsem navrhl
+          architekturu nové verze platformy: principy Clean Architecture pro
+          mobilní aplikace a cloudové mikroslužby pro backend. Nové vzory
+          jsem následně provedl schválením a nasazením napříč několika
+          aplikačními týmy.
+ndaAvailable: true

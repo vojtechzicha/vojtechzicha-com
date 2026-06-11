@@ -1,0 +1,28 @@
+order: 6
+cvSlug: 'consultant'
+title: { en: 'Technical Consultant', cs: 'Technický konzultant' }
+glyph: ring
+hue: 278
+headline:
+  en: 'Architecture review, advisory, and training'
+  cs: 'Review architektury, poradenství a školení'
+pitch:
+  en: >-
+    A second set of eyes on a design, an integration landscape, or a
+    migration plan — plus mentoring of customer engineers and training of
+    clients and internal staff. Available as one-off consults or part-time
+    engagements.
+  cs: >-
+    Druhý pár očí na návrh, integrační prostředí nebo migrační plán — a k
+    tomu mentoring inženýrů zákazníka a školení klientů i interních týmů.
+    K dispozici jako jednorázové konzultace nebo spolupráce na část úvazku.
+bullets:
+  - en: 'Technical architecture expertise and solution design guidance'
+    cs: 'Expertiza v technické architektuře a vedení návrhu řešení'
+  - en: 'Mentoring of customer engineers, training of clients and internal staff'
+    cs: 'Mentoring inženýrů zákazníka, školení klientů a interních týmů'
+  - en: 'Quality oversight of deliverables into client environments'
+    cs: 'Dohled nad kvalitou dodávek do prostředí klienta'
+projects: [odoo-crm-erp, loyalty-platform, vignette-enforcement]
+skills: [togaf-ea, archimate-uml, integration, dev-node-dotnet]
+certs: [togaf-certified, archimate-practitioner, ml]

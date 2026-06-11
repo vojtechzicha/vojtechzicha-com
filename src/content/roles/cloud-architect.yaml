@@ -1,0 +1,29 @@
+order: 4
+cvSlug: 'cloud'
+title: { en: 'Cloud Architect', cs: 'Cloud architekt' }
+glyph: half
+hue: 234
+headline:
+  en: 'Cloud architecture across AWS, GCP, and Azure'
+  cs: 'Cloudová architektura napříč AWS, GCP a Azure'
+pitch:
+  en: >-
+    Multi-cloud by experience, not by slogan: GCP-hosted loyalty platforms,
+    Azure-hosted connected-car backends, AWS certification. I pick the cloud
+    that fits the constraint, then design for it properly — containers,
+    managed services, and operations included.
+  cs: >-
+    Multi-cloud ze zkušenosti, ne ze sloganu: věrnostní platformy na GCP,
+    connected-car backendy v Azure, certifikace AWS. Vyberu cloud, který
+    odpovídá zadání, a navrhnu pro něj řešení pořádně — včetně kontejnerů,
+    spravovaných služeb a provozu.
+bullets:
+  - en: 'Production deliveries on GCP, Azure, and AWS'
+    cs: 'Produkční dodávky na GCP, Azure i AWS'
+  - en: 'Kubernetes-hosted backends and containerized platforms'
+    cs: 'Backendy na Kubernetes a kontejnerizované platformy'
+  - en: 'Cloud setup, development guidelines, and backend foundations for application teams'
+    cs: 'Cloud setup, vývojové guidelines a backendové základy pro aplikační týmy'
+projects: [connected-car, loyalty-platform, vignette-enforcement]
+skills: [cloud-gcp-azure, cloud-aws, kubernetes, iac-monitoring]
+certs: [aws-sa-associate, itil]

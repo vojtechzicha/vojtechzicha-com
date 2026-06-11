@@ -1,0 +1,89 @@
+order: 2
+featured: true
+industry: { en: 'Automotive', cs: 'Automotive' }
+mark: 'AUTO'
+client:
+  public:
+    en: 'A major automotive OEM'
+    cs: 'Významný automobilový výrobce (OEM)'
+period: '2022 — 2026'
+lens: cloud-architect
+stack: ['Azure', 'Kubernetes']
+title:
+  en: 'Connected-car backend platform'
+  cs: 'Backendová platforma pro connected car'
+summary:
+  public:
+    en: >-
+      Architecture oversight of a high-load backend platform running on
+      Kubernetes hosted in Azure, supporting mobile applications for end
+      customers of a major automotive OEM.
+    cs: >-
+      Architektonický dohled nad vysoce zatíženou backendovou platformou
+      běžící na Kubernetes v Azure, která obsluhuje mobilní aplikace pro
+      koncové zákazníky významného automobilového výrobce.
+lenses:
+  devops-lead:
+    en: >-
+      Oversight of the delivery and runtime platform for a high-load,
+      Kubernetes-on-Azure backend — keeping a system that end customers
+      depend on shippable and operable at scale.
+    cs: >-
+      Dohled nad dodávkovou a provozní platformou vysoce zatíženého backendu
+      na Kubernetes v Azure — aby systém, na kterém závisí koncoví zákazníci,
+      zůstal dodatelný a provozovatelný ve velkém měřítku.
+sections:
+  - heading: { en: 'Context', cs: 'Kontext' }
+    body:
+      - en: >-
+          A major automotive OEM runs a connected-car programme: mobile
+          applications through which end customers interact with their
+          vehicles. Behind them sits a high-load backend platform that has to
+          scale with the fleet.
+        cs: >-
+          Významný automobilový výrobce provozuje connected-car program:
+          mobilní aplikace, jejichž prostřednictvím koncoví zákazníci
+          komunikují se svými vozidly. Za nimi stojí vysoce zatížená
+          backendová platforma, která musí škálovat s celou flotilou.
+  - heading: { en: 'My role', cs: 'Moje role' }
+    body:
+      - en: >-
+          I provided architecture oversight of the platform — reviewing and
+          steering the design of the Kubernetes-based services hosted in
+          Azure, so that the backend stayed coherent as multiple teams built
+          on top of it.
+        cs: >-
+          Zajišťoval jsem architektonický dohled nad platformou — revidoval
+          a směroval návrh služeb postavených na Kubernetes v Azure tak, aby
+          backend zůstal konzistentní, i když na něm staví více týmů
+          současně.
+diagram:
+  caption: 'FIG.01'
+  title:
+    en: 'Connected-car platform — anonymized, indicative'
+    cs: 'Connected-car platforma — anonymizováno, ilustrativní'
+  tiers:
+    - num: '01'
+      label: 'Clients'
+      boxes:
+        - { label: 'mobile apps', sub: 'iOS · Android' }
+        - { label: 'vehicles', sub: 'telemetry' }
+    - num: '02'
+      label: 'Edge'
+      boxes:
+        - { label: 'api gateway', sub: 'REST', active: true }
+    - num: '03'
+      label: 'Compute · AKS'
+      group: true
+      boxes:
+        - { label: 'customer services' }
+        - { label: 'vehicle services', active: true }
+        - { label: 'integration services' }
+    - num: '04'
+      label: 'Backends'
+      boxes:
+        - { label: 'data stores' }
+        - { label: 'oem systems', sub: 'integration', active: true }
+  railLeft: 'kubernetes on azure — high-load, multi-team'
+  railRight: 'serves end-customer mobile apps'
+ndaAvailable: true

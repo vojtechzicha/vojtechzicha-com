@@ -1,0 +1,22 @@
+---
+// Per-role geometric mark — the role identity layer (design.md §3.4).
+interface Props {
+  type: 'triangle' | 'diamond' | 'circle' | 'square' | 'bar' | 'ring' | 'half'
+  color?: string
+  size?: number
+}
+const { type, color = 'var(--accent)', size = 12 } = Astro.props
+const s = size
+
+const styles: Record<string, string> = {
+  triangle: `width:0;height:0;border-left:${s / 2}px solid transparent;border-right:${s / 2}px solid transparent;border-bottom:${s * 0.88}px solid ${color};`,
+  diamond: `width:${s * 0.78}px;height:${s * 0.78}px;background:${color};transform:rotate(45deg);`,
+  circle: `width:${s}px;height:${s}px;border-radius:50%;background:${color};`,
+  square: `width:${s * 0.9}px;height:${s * 0.9}px;background:${color};`,
+  bar: `width:${Math.max(3, s * 0.34)}px;height:${s}px;background:${color};`,
+  ring: `width:${s}px;height:${s}px;border-radius:50%;border:${Math.max(2, s * 0.2)}px solid ${color};`,
+  half: `width:${s}px;height:${s}px;border-radius:50%;background:linear-gradient(90deg, ${color} 0 50%, transparent 50% 100%);box-shadow:inset 0 0 0 1.4px ${color};`,
+}
+---
+
+<span class="glyph" style={styles[type]} aria-hidden="true"></span>

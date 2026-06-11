@@ -1,0 +1,349 @@
+---
+// CV print source — 3 A4 pages, rendered to PDF at build time by
+// scripts/generate-cv.mjs (assignment.md §4.2: PDFs are deploy artifacts
+// generated per profile from the same content base, never maintained by
+// hand). Without a `role` this is the generalist CV served at /cv; with a
+// role it renders that lens (role title, headline, pitch, focus bullets)
+// and is served at /cv-<cvSlug>. Application microsites (assignment §4.3)
+// can later add entries to the same manifest for per-application CVs.
+// Entries with `print: false` are web-only. English, public tier only.
+import type { CollectionEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
+import { SITE, UI } from '../data/site'
+import '../styles/print.css'
+
+interface Props {
+  role?: CollectionEntry<'roles'>
+}
+const { role } = Astro.props
+
+const experience = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order)
+const education = (await getCollection('education'))
+  .filter((e) => e.data.print)
+  .sort((a, b) => a.data.order - b.data.order)
+const certs = (await getCollection('certifications'))
+  .filter((c) => c.data.print)
+  .sort((a, b) => a.data.order - b.data.order)
+const projects = await getCollection('projects')
+const projTitle = (id: string) => projects.find((p) => p.id === id)?.data.title.en
+
+const byId = Object.fromEntries(experience.map((e) => [e.id, e]))
+// page split: recent on p1, earlier on p2, credentials on p3
+const xpPage1 = ['freelance', 'eman-head-of-technology'].map((id) => byId[id]).filter(Boolean)
+const xpPage2 = ['eman-solution-architect', 'wag', 'provident'].map((id) => byId[id]).filter(Boolean)
+
+const certGroups = (['cloud', 'ea', 'itsm', 'earlier'] as const)
+  .map((g) => ({
+    label: UI.certGroups[g].en,
+    items: certs.filter((c) => c.data.group === g),
+  }))
+  .filter((g) => g.items.length > 0)
+const half = Math.ceil(certGroups.length / 2)
+const certCols = [certGroups.slice(0, half), certGroups.slice(half)]
+
+const skillRows = [
+  { cat: 'Architecture', ids: ['togaf-ea', 'archimate-uml'] },
+  { cat: 'Cloud', ids: ['cloud-aws', 'cloud-gcp-azure'] },
+  { cat: 'Platform', ids: ['kubernetes', 'devops-cicd', 'iac-monitoring'] },
+  { cat: 'Integration', ids: ['eda-microservices', 'integration'] },
+  { cat: 'Development', ids: ['dev-node-dotnet'] },
+].map((r) => ({ cat: r.cat, vals: r.ids.map((id) => SITE.skills[id].name.en).join(' · ') }))
+
+const stamp = new Date().toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })
+const roleLine = role ? role.data.title.en : 'Solution & Cloud Architect'
+const cvFootLeft = `Vojtěch Zicha · CV${role ? ` · ${role.data.title.en}` : ''} · ${stamp} · public version, anonymized`
+const cvUrl = role ? `/cv-${role.data.cvSlug}` : '/cv'
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{`Vojtěch Zicha — CV${role ? ` · ${role.data.title.en}` : ''} (print source)`}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <div class="desk">
+      <div class="hint">
+        <span class="tag">CV{role && ` · ${role.data.title.en}`} — 3 pp · A4</span>
+        <span style="margin-left:auto;"
+          >Print source — the PDF is generated from this page at every build and served at
+          <span class="kbd">{cvUrl}</span></span
+        >
+      </div>
+
+      <div class="docrule">
+        <span class="n">CV</span> Curriculum Vitae{role && ` — ${role.data.title.en}`}
+        <span class="line"></span> A4 · 3 pages
+      </div>
+
+      <!-- CV — page 1 -->
+      <div class="sheetwrap">
+        <span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span
+          class="cm br"></span>
+        <div class="sheet">
+          <div class="lh">
+            <div class="gridband"></div>
+            <div class="mark">{SITE.monogram}</div>
+            <div class="who">
+              <div class="name">{SITE.name}</div>
+              <div class="role">{roleLine}</div>
+            </div>
+            <div class="contact">
+              <div>
+                <span class="k">E&nbsp;&nbsp;</span><a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+              </div>
+              <div><span class="k">W&nbsp;&nbsp;</span>vojtechzicha.com</div>
+              <div><span class="k">L&nbsp;&nbsp;</span>Prague, Czechia · remote &amp; EU</div>
+              <div><span class="k">in</span> /vojtechzicha</div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="sechead">
+              <span class="num">01</span><span class="t">Profile</span><span class="rule"></span>
+            </div>
+            {
+              role ? (
+                <>
+                  <p class="profile">
+                    <b>{role.data.headline.en}.</b> {role.data.pitch.en}
+                  </p>
+                  <ul class="profile-ul">
+                    {role.data.bullets.map((b) => (
+                      <li>
+                        <span class="b">→</span>
+                        <span>{b.en}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <p class="profile">
+                  Solution and cloud architect with <b>over 11 years of experience</b> across
+                  financial services, automotive, energy, and public-sector clients. I design
+                  full-scale architectures and own delivery end to end — with particular strength in
+                  cloud, DevOps, and DevSecOps for web, mobile, and IoT platforms. I pair hands-on
+                  engineering with formal enterprise-architecture practice (TOGAF, ArchiMate) and AWS
+                  certification. <b>30+ projects delivered</b>; largest team led, <b>22</b>.
+                </p>
+              )
+            }
+          </div>
+
+          <div class="sec">
+            <div class="sechead">
+              <span class="num">02</span><span class="t">Experience</span><span class="rule"></span>
+            </div>
+            {
+              xpPage1.map((e) => (
+                <div class="xp">
+                  <div class="meta">
+                    <div class="period">{e.data.period}</div>
+                    {e.data.location && <div>{e.data.location.en}</div>}
+                  </div>
+                  <div>
+                    <h3>{e.data.title.en}</h3>
+                    <div class="org">{e.data.org}</div>
+                    {e.data.blocks.map((b) => (
+                      <>
+                        {b.intro && <p class="intro">{b.intro.en}</p>}
+                        {b.bullets.length > 0 && (
+                          <ul>
+                            {b.bullets.map((li) => (
+                              <li>
+                                <span class="b">→</span>
+                                <span>{li.en}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </>
+                    ))}
+                    {e.data.projects.length > 0 && (
+                      <div class="stack">
+                        {e.data.projects.map(
+                          (pid) => projTitle(pid) && <span class="tg">{projTitle(pid)}</span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+
+          <div class="docfoot">
+            <span>{cvFootLeft}</span>
+            <span class="pg">01 / 03</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CV — page 2 -->
+      <div class="sheetwrap">
+        <span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span
+          class="cm br"></span>
+        <div class="sheet">
+          <div class="lh">
+            <div class="mark">{SITE.monogram}</div>
+            <div class="who">
+              <div class="name">{SITE.name}</div>
+              <div class="role">{roleLine}</div>
+            </div>
+            <div class="contact">
+              <div><span class="k">E&nbsp;&nbsp;</span>{SITE.email}</div>
+              <div><span class="k">W&nbsp;&nbsp;</span>vojtechzicha.com</div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="sechead">
+              <span class="num">02</span><span class="t">Experience — earlier</span><span
+                class="rule"></span>
+            </div>
+            {
+              xpPage2.map((e) => (
+                <div class="xp">
+                  <div class="meta">
+                    <div class="period">{e.data.period}</div>
+                    {e.data.location && <div>{e.data.location.en}</div>}
+                  </div>
+                  <div>
+                    <h3>{e.data.title.en}</h3>
+                    <div class="org">{e.data.org}</div>
+                    {e.data.blocks.map((b) => (
+                      <>
+                        {b.intro && <p class="intro">{b.intro.en}</p>}
+                        {b.bullets.length > 0 && (
+                          <ul>
+                            {b.bullets.map((li) => (
+                              <li>
+                                <span class="b">→</span>
+                                <span>{li.en}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </>
+                    ))}
+                    {e.data.projects.length > 0 && (
+                      <div class="stack">
+                        {e.data.projects.map(
+                          (pid) => projTitle(pid) && <span class="tg">{projTitle(pid)}</span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+
+          <div class="docfoot">
+            <span>{cvFootLeft}</span>
+            <span class="pg">02 / 03</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CV — page 3 -->
+      <div class="sheetwrap">
+        <span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span
+          class="cm br"></span>
+        <div class="sheet">
+          <div class="lh">
+            <div class="mark">{SITE.monogram}</div>
+            <div class="who">
+              <div class="name">{SITE.name}</div>
+              <div class="role">{roleLine}</div>
+            </div>
+            <div class="contact">
+              <div><span class="k">E&nbsp;&nbsp;</span>{SITE.email}</div>
+              <div><span class="k">W&nbsp;&nbsp;</span>vojtechzicha.com</div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="sechead">
+              <span class="num">03</span><span class="t">Certifications</span><span class="rule"
+              ></span>
+            </div>
+            <div class="grid2">
+              {
+                certCols.map((col) => (
+                  <div>
+                    {col.map((g) => (
+                      <>
+                        <div class="certissuer">{g.label}</div>
+                        {g.items.map((c) => (
+                          <div class="cert">
+                            <span>
+                              {c.data.title}
+                              <span class="iss">
+                                {c.data.issuer}
+                                {c.data.url && ` · vojtechzicha.com${c.data.url}`}
+                              </span>
+                            </span>
+                            <span class="y">{c.data.date.slice(0, 4)}</span>
+                          </div>
+                        ))}
+                      </>
+                    ))}
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="sechead">
+              <span class="num">04</span><span class="t">Skills</span><span class="rule"></span>
+            </div>
+            {
+              skillRows.map((r) => (
+                <div class="skillrow">
+                  <div class="cat">{r.cat}</div>
+                  <div class="vals">{r.vals}</div>
+                </div>
+              ))
+            }
+          </div>
+
+          <div class="sec">
+            <div class="sechead">
+              <span class="num">05</span><span class="t">Education &amp; Languages</span><span
+                class="rule"></span>
+            </div>
+            <div class="grid2">
+              <div>
+                {
+                  education.map((ed) => (
+                    <div class="edurow">
+                      <div class="deg">{ed.data.title.en}</div>
+                      <div class="sch">
+                        {ed.data.school} · {ed.data.period}
+                      </div>
+                      {ed.data.note && <div class="note">{ed.data.note.en}</div>}
+                    </div>
+                  ))
+                }
+              </div>
+              <div class="langrow">
+                <div class="l"><b>Czech</b><span>native</span></div>
+                <div class="l"><b>English</b><span>full professional (C1)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="docfoot">
+            <span>Full project detail — real names, real diagrams — available under NDA</span>
+            <span class="pg">03 / 03</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

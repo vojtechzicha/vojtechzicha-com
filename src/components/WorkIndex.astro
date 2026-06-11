@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content'
+import Base from '../layouts/Base.astro'
+import SectionHead from './SectionHead.astro'
+import CaseSheet from './CaseSheet.astro'
+import { SITE, UI, localePath, type Lang } from '../data/site'
+
+interface Props {
+  lang: Lang
+}
+const { lang } = Astro.props
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order)
+const title = `${UI.work.indexTitle[lang]} — ${SITE.name}`
+---
+
+<Base lang={lang} path="/work/" title={title}>
+  <section class="wrap block">
+    <p style="margin:0 0 18px">
+      <a class="backlink" href={localePath(lang, '/')}>{UI.work.backHome[lang]}</a>
+    </p>
+    <SectionHead num="02" title={UI.work.indexTitle[lang]} cap={UI.work.indexCap[lang]} />
+    {projects.map((p) => <CaseSheet project={p} lang={lang} />)}
+  </section>
+</Base>
